@@ -940,7 +940,7 @@ def nbp_kursy_fn(data_od, data_do):
 def defragment_table(table_name, table_path, max_partitions):
     if app.table(table_name).rdd.getNumPartitions() > max_partitions:
         def stringify(s):
-            return s if isinstance(s, (str, e)) else str(s)
+            return s if isinstance(s, (str, unicode)) else str(s)
 
         print("Redukuje liczbe partycji tabeli {0}".format(table_name))
         tmp_path = table_path + ".defrag"

@@ -1,0 +1,29 @@
+Zmienna	Opis	Typ zmiennej		
+race_ethnicity_combined	Rasa lub grupa etnicna	wielomianowa nieuporz¹dkowana		
+cdc_case_earliest_dt	Najwczeœniejsza data zwi¹zana z obserwacj¹ 	data		
+sex	P³eæ	dwumianowa		
+hosp_yn	Hospitalizacja pacjenta	dwumianowa		
+icu_yn	Pobyt na oddziale intensywnej terapi	dwumianowa		
+hc_work_yn	Status pracownika s³u¿by zdrowia	dwumianowa		
+pna_yn	Obecne zapalenie p³uc	dwumianowa		
+abxchest_yn	Nieprawid³owoœci wykryte przez RTG klatki piersiowej	dwumianowa		
+acuterespdistress_yn	Obecnoœæ zespo³u ostrej niewydolnoœci oddechowej	dwumianowa		
+mechvent_yn	U¿ycie mechanicznej wentylacji (intubacja)	dwumianowa		
+fever_yn	Wystêpowanie gor¹czki	dwumianowa		
+sfever_yn	Subiektywne poczucie gor¹czki	dwumianowa		
+chills_yn	Wystêpowanie dreszczy	dwumianowa		
+myalgia_yn	Wystêpowanie bóli miêœniowych	dwumianowa		
+runnose_yn	Wystêpowanie kataru	dwumianowa		
+sthroat_yn	Wystêpowanie bólu gard³a	dwumianowa		
+cough_yn	Wystêpowanie kaszlu	dwumianowa		
+sob_yn	Wystêpowanie trudnoœci z oddechaniem	dwumianowa		
+nauseavomit_yn	Wystêpowanie nudnoœci	dwumianowa		
+headache_yn	Wystêpowanie bólu g³owy	dwumianowa		
+abdom_yn	Wystêpowanie bólu brzucha	dwumianowa		
+diarrhea_yn	Wystêpowanie biegunki	dwumianowa		
+medcond_yn	Wystêpowanie wspó³istniej¹cych schorzeñ 	dwumianowa		
+county_fips_code	Kod pocztowy	licznikowa		
+res_county	Zamieszkane hrabstwo	wielomianowa nieuporz¹dkowana		
+res_state	Zamieszkany stan	wielomianowa nieuporz¹dkowana		
+age_group	Grupa wiekowa	wielomianowa uporz¹dkowana		
+death_yn	Zgon pacjenta	dwumianowa		

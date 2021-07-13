@@ -1,0 +1,29 @@
+Zmienna,Opis,Typ zmiennej
+race_ethnicity_combined,Rasa lub grupa etnicna,wielomianowa nieuporządkowana
+cdc_case_earliest_dt,Najwcześniejsza data związana z obserwacją ,data
+sex,Płeć,dwumianowa
+hosp_yn,Hospitalizacja pacjenta,dwumianowa
+icu_yn,Pobyt na oddziale intensywnej terapi,dwumianowa
+hc_work_yn,Status pracownika służby zdrowia,dwumianowa
+pna_yn,Obecne zapalenie płuc,dwumianowa
+abxchest_yn,Nieprawidłowości wykryte przez RTG klatki piersiowej,dwumianowa
+acuterespdistress_yn,Obecność zespołu ostrej niewydolności oddechowej,dwumianowa
+mechvent_yn,Użycie mechanicznej wentylacji (intubacja),dwumianowa
+fever_yn,Występowanie gorączki,dwumianowa
+sfever_yn,Subiektywne poczucie gorączki,dwumianowa
+chills_yn,Występowanie dreszczy,dwumianowa
+myalgia_yn,Występowanie bóli mięśniowych,dwumianowa
+runnose_yn,Występowanie kataru,dwumianowa
+sthroat_yn,Występowanie bólu gardła,dwumianowa
+cough_yn,Występowanie kaszlu,dwumianowa
+sob_yn,Występowanie trudności z oddechaniem,dwumianowa
+nauseavomit_yn,Występowanie nudności,dwumianowa
+headache_yn,Występowanie bólu głowy,dwumianowa
+abdom_yn,Występowanie bólu brzucha,dwumianowa
+diarrhea_yn,Występowanie biegunki,dwumianowa
+medcond_yn,Występowanie współistniejących schorzeń ,dwumianowa
+county_fips_code,Kod pocztowy,licznikowa
+res_county,Zamieszkane hrabstwo,wielomianowa nieuporządkowana
+res_state,Zamieszkany stan,wielomianowa nieuporządkowana
+age_group,Grupa wiekowa,wielomianowa uporządkowana
+death_yn,Zgon pacjenta,dwumianowa
