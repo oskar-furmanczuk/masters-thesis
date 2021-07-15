@@ -339,7 +339,8 @@ Pierwszym krokiem było dowiązanie wskaźników atmosferycznych do zbioru danyc
 
 Kolejnym etapem było dowiązanie powstałego w poprzednim kroku zbioru ze zbiorem danych uzyskanym z portalu ArcGIS. Osiągnięto to przez zmapowanie nazwy zamieszkanego hrabstwa osoby ze stwierdzonym COVID-19 z gęstością zaludnienia w tym obszarze. W ten sposób uzyskano zmienną \emph{pop\_density}, która określa gęstość zaludnienia wyrażoną w liczbie osób na mile kwadratową.
 
-Ostatnim krokiem było odrzucenie niepożądanych zmiennych z powstałego zbioru danych. Ten etap był konieczny gdyż niektóre zmienne nie miały bezpośredniego związku z wyjaśnieniem przedmiotu tej pracy. Odrzuconymi zmiennymi były:  \emph{county\_fips\_code},  \emph{res\_county}, \emph{res\_state}, \emph{cdc\_case\_earliest\_dt}, \emph{date\_month} oraz \emph{current\_status}.
+Ostatnim krokiem było odrzucenie niepożądanych zmiennych z powstałego zbioru danych. Ten etap był konieczny gdyż niektóre zmienne nie miały bezpośredniego związku z wyjaśnieniem przedmiotu tej pracy. Odrzuconymi zmiennymi były:  \emph{county\_fips\_code},  \emph{res\_county}, \emph{res\_state}, \emph{cdc\_case\_earliest\_dt} oraz \emph{date\_month}.
+
 
 % --- chapter ---------------------------------------------------------
 \clearpage
@@ -349,6 +350,69 @@ Ostatnim krokiem było odrzucenie niepożądanych zmiennych z powstałego zbioru
 - opis użytego modelu (docelowo: xgboost) oraz jego zasadność względem niezbalansowanej próby\\
 - opis metod walidacji oraz jakości modelu (F1-score, accuracy) \\
 - opis sposobu interpretacji wpływu zmiennych objaśniających na zmienną objaśnianą (docelowo: SHAP)
+
+\subsection{Podział zbioru na treningowy, walidacyjny i testowy}
+
+W uczeniu maszynowym powszechnym zadaniem jest badanie i konstruowanie algorytmów, które potrafią uczyć się na podstawie danych i dokonywać predykcji na ich podstawie. \cite{kohavi1998} Model jest początkowo dopasowywany do zbioru danych treningowych, który jest zbiorem przykładów używanych do dopasowania parametrów (np. wag połączeń między neuronami w sztucznych sieciach neuronowych) modelu. Model (np. sieć neuronowa lub naiwny klasyfikator Bayesa) jest trenowany na zbiorze danych treningowych za pomocą metody uczenia nadzorowanego, na przykład za pomocą metod optymalizacji, takich jak opadanie gradientowe lub stochastyczne opadanie gradientowe. W praktyce, zbiór danych szkoleniowych często składa się z par wektora wejściowego (lub skalara) i odpowiadającego mu wektora wyjściowego (lub skalara), gdzie klucz odpowiedzi jest powszechnie oznaczany jako cel (lub etykieta). Bieżący model jest uruchamiany z zestawem danych treningowych i wytwarza wynik, który jest następnie porównywany z celem, dla każdego wektora wejściowego w zestawie danych treningowych. W oparciu o wynik porównania i określony algorytm uczenia się, parametry modelu są dostosowywane. Dopasowanie modelu może obejmować zarówno selekcję zmiennych, jak i estymację parametrów.
+
+Następnie, dopasowany model jest używany do przewidywania odpowiedzi dla obserwacji w drugim zbiorze danych zwanym zbiorem danych walidacyjnych. Zbiór danych walidacyjnych zapewnia bezstronną ocenę dopasowania modelu na zbiorze danych treningowych podczas dostrajania hiperparametrów modelu (np. liczba jednostek ukrytych - warstw i szerokości warstw - w sieci neuronowej). Walidacyjne zbiory danych mogą być użyte do regularyzacji poprzez wczesne zatrzymanie (zatrzymanie treningu, gdy błąd na walidacyjnym zbiorze danych wzrasta, ponieważ jest to oznaką przepasowania do zbioru treningowego). Ta prosta procedura jest skomplikowana w praktyce przez fakt, że błąd zbioru walidacyjnego może wahać się podczas treningu, tworząc wiele lokalnych minimów. Ta komplikacja doprowadziła do powstania wielu reguł ad hoc służących do określania, kiedy przepełnienie naprawdę się rozpoczęło.
+
+Finalnie, testowy zbiór danych jest zbiorem danych używanym w celu zapewnienia bezstronnej oceny ostatecznego dopasowania modelu na treningowym zbiorze danych. Jeśli dane w testowym zbiorze danych nigdy nie były używane w trenowaniu modelu (na przykład w walidacji krzyżowej), testowy zbiór danych jest również nazywany zbiorem danych przejściowych (ang. holdout dataset). Termin "zbiór walidacyjny" jest czasami używany zamiast terminu "zbiór testowy" (np. jeżeli oryginalny zbiór danych został podzielony tylko na dwa podzbiory, zbiór testowy może być określany jako zbiór walidacyjny).\cite{brownlee2017}
+
+Docelowy zbiór danych użyty w tej pracy został losowo podzielony na treningowy, walidacyjny i testowy w stosunku 3:1:1. Etap ten umożliwił w kolejnych krokach dobranie właściwych parametrów oraz zbudowanie optymalnego modelu.
+
+\subsection{Budowa modelu klasyfikacyjnego XGBoost}
+
+XGBoost to biblioteka oparta na licencji otwartego kodu źródłowego, która dostarcza regularyzujący framework do wspomagania gradientowego dla C++, Javy, Pythona, R, Julii, Perla i Scali. XGBoost jest kompatybilny z systemami Linux, Windows i macOS. Działa na pojedynczej maszynie, jak również na frameworkach przetwarzania rozproszonego Apache Hadoop, Apache Spark i Apache Flink. 
+
+Klasyfikator XGBoost posiada wiele hiperparametrów, które mogłyby posłużyć do strojenia modelu. Najważniejsze z nich zostały użyte do stworzenia optymalnego modelu dla tej pracy:
+\begin{itemize}
+ \item \emph{learning\_rate} - Tempo uczenia modelu. Zmniejszanie wielkości kroków w aktualizacji zapobiega przeszacowaniu modelu.
+ \item \emph{max\_depth} - Maksymalna głębokość drzewa. Zwiększenie tej wartości sprawi, że model będzie bardziej złożony i prawdopodobnie obszerniejszy.
+ \item \emph{min\_child\_weight} - Minimalna suma wagi instancji w poprzedniku. Jeśli krok podziału drzewa skutkuje powstaniem węzła liścia z sumą wagi instancji mniejszą niż min\_child\_weight, wówczas proces tworzenia rezygnuje z dalszego podziału. 
+ \item \emph{scale\_pos\_weight} - Współczynnik zbalansowania zbioru treningowego. Kontrola równowagi wag dodatnich i ujemnych, przydatna w przypadku niezrównoważonych klas.
+ \item \emph{gamma} - Minimalna redukcja strat wymagana do utworzenia kolejnej partycji na węźle liścia drzewa. Im większa wartość gamma, tym bardziej konserwatywny algorytm.
+\end{itemize}
+
+By zapewnić wysoką wydajność procesowania autorzy biblioteki zaparzyli ją w wysoce wydajne mechanizmy. Biblioteka XGBoost obsługuję między innymi trzy formy wspomagania gradientowego:
+\begin{itemize}
+  \item Algorytm Gradient Boosting zwany również maszyną gradient boostingową z uwzględnieniem współczynnika uczenia.
+  \item Stochastyczny Gradient Boosting z podpróbkowaniem na poziomie wiersza, kolumny i kolumny na poziom rozdzielenia.
+  \item Regularyzowany Gradient Boosting z regularyzacją zarówno L1 jak i L2.
+\end{itemize}
+
+Implementacja algorytmu została zaprojektowana pod kątem efektywności czasu obliczeń i zasobów pamięci. Niektóre kluczowe cechy implementacji algorytmu obejmują:
+\begin{itemize}
+ \item Implementacja uwzględniająca rzadkość danych z automatyczną obsługą brakujących wartości danych.
+ \item Struktura blokowa wspierająca paralelizację konstrukcji drzewa.
+ \item Inkrementalne trenowanie modelu, dzięki któremu można dalej wzmacniać już dopasowany model na nowych danych.
+\end{itemize}
+
+Oprócz poprzednio wymienionych mechanizmów algorytm klasyfikatora XGBoost umożliwia korzystanie z niezbalansowanych zbiorów danych. Dla użytkownika klasyfikatora ta funcjonalność udostępniona jest przez hiperparametr \emph{scale\_pos\_weight}. Ze względu na niezbalansowany zbiór wykorzystany w tej pracy (zmienna objaśniana \emph{death\_yn} zawiera tylko 1,3\% pozytywnych wartości) mechanizm ten okazał się niezbędny. Jest to rzadko spotykana funkcjonalność zaimplementowana w modelach uczenia maszynowego. Ze względu na ten opisany mechanizm, wysoką wydajność obliczeń i zasobów oraz dużą popularność w komercjalnych zastosowaniach klasyfikator XGBoost został wybrany na docelowy model uczenia maszynowego dla tej pracy. 
+
+\subsection{Interpretacja wskaźników jakości modelu}
+
+\subsubsection{F1-score}
+
+W analizie statystycznej klasyfikacji binarnej, F1-score lub F1-measure jest miarą dokładności testu. Jest on obliczany na podstawie miary precyzji (ang. precision) i czułości (ang. recall), gdzie precyzja jest liczbą prawdziwie pozytywnych wyników podzielonych przez liczbę wszystkich pozytywnych wyników, w tym tych, które nie zostały prawidłowo zidentyfikowane, a czułość jest liczbą prawdziwie pozytywnych wyników podzielonych przez liczbę wszystkich próbek, które powinny być zidentyfikowane jako pozytywne. Precyzja jest również znana jako pozytywna wartość predykcyjna, a wycofanie jest również znane jako czułość w diagnostycznej klasyfikacji binarnej. Wynik F1-score jest średnią harmoniczną precyzji i czułości. 
+
+Najwyższą możliwą wartością F1-score jest 1.0, wskazując idealną precyzję i czułość, a najniższą możliwą wartością jest 0, jeśli precyzja lub czułość wynosi zero. Wynik F1-score jest również znany jako współczynnik Sørensena-Dice'a lub współczynnik podobieństwa Dice'a (DSC).
+
+\[ F_1 = \frac{2}{recall^{-1} + precision^{-1}} = 2 * \frac{precision * recall}{precision + recall} \]
+
+F1-score został użyty do wyznaczenia najlepszych hiperparametrów. Po podstawieniu kolejnych kombinacji hiperparametrów do budowanego modelu dla danych treningowych obliczana była wartość F1-score. Za najlepsze hiperparametry uznano te dla, których model przetestowany na danych walidacyjnych osiągnął najwyższą wartość F1-score. 
+
+Ze względu na szerokie spektrum własności oraz celność tego wskaźnika F1-score został użyty również do przedstawienia jakości docelowego modelu. Wykonano to przez przetestowanie modelu na danych testowych i późniejszym obliczeniu wartości F1-score.
+
+\subsubsection{Dokładność}
+
+W rozpoznawaniu wzorców, wyszukiwaniu informacji i klasyfikacji (uczenie maszynowe), precyzja (ang. precision)  - zwana również pozytywną wartością predykcyjną - jest frakcją odpowiednich instancji wśród odzyskanych instancji. Zarówno precyzja, jak i recall są zatem oparte na trafności.
+
+W przypadku zadań klasyfikacyjnych terminy \emph{prawdziwie dodatni (tp)} , \emph{prawdziwie ujemny (tn)}, \emph{fałszywie dodatni (fp)} i \emph{fałszywie ujemny (fn)} porównują wyniki testowanego klasyfikatora z wiarygodną oceną zewnętrzną. Terminy pozytywny i negatywny odnoszą się do przewidywań klasyfikatora (czasami znanych jako oczekiwania), a terminy prawdziwy i fałszywy odnoszą się do tego, czy przewidywania te odpowiadają zewnętrznemu osądowi (czasami nazywanemu jako obserwacja).
+
+
+
+
 
 % --- chapter ---------------------------------------------------------
 \clearpage

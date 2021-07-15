@@ -276,4 +276,5 @@ TSWLatexianTemp*
 *.lpz
 
 # Ignoruj katalog /data
-./data
+/data/*
+/.idea
