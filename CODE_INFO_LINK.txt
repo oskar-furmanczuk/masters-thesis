@@ -1,0 +1,3 @@
+notatnik z kodem użytym do pracy jest dostępny przez link:
+
+https://colab.research.google.com/drive/1UvrR5_pR9oIYu3GKC6IW9kWYUmTsPQ55?usp=sharing
