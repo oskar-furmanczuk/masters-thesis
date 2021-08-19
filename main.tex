@@ -147,7 +147,7 @@ Nr albumu: 81794
 \vspace*{2cm}
 \rule{0cm}{1cm}\hfill
 \begin{minipage}{9cm}
-Praca licencjacka napisana\\
+Praca magisterska napisana\\
 w Katedrze Matematyki i Ekonomii Matematycznej\\
 pod kierunkiem naukowym\\
 dr hab. Michała Ramszy
@@ -168,12 +168,13 @@ Warszawa 2021
 \cleardoublepage
 \section{Wprowdzenie}
 
-- przegląd litertury dotyczącej koronawirusa - artykuły poświęcone badaniom wpływu czynników biologicznych na przebieg choroby \\
-- związek pracy z ekonomią \\
+%- przegląd litertury dotyczącej koronawirusa - artykuły poświęcone badaniom wpływu czynników biologicznych na przebieg choroby \\
+%- związek pracy z ekonomią \\
 
 % --- chapter ---------------------------------------------------------
 \cleardoublepage
 \section{Przegląd literatury}
+\label{chapter:przeglad-literatury}
 \subsection{Rasa jako determinanta przebiegu choroby COVID-19 u pacjentów z chorobą współistniejącą}
 
 Jednym z projektów prowadzonych na rzecz opisu przebiegu COVID-19 u pacjentów pochodzących z różnych grup rasowych jest „Racial disparities in patients with coronavirus disease 2019 infection and gynecologic malignancy”. Badanie to zostało przeprowadzone w Stanach Zjednoczonych na podstawie danych zebranych przez osiem systemów nowojorskich szpitali w okresie od 1 marca 2020 do 20 maja 202. Celem tego badania było sprawdzenie, czy istnieją rozbieżności na tle rasowym wśród pacjentek z rakiem ginekologicznym, u których stwierdzono obecność COVID-19.Wszystkie pacjentki biorące udział w badaniu miały ukończone 18 lat. Porównano charakterystykę wyjściową i kliniczną, zbadano różnice we wskaźnikach hospitalizacji i śmiertelności oraz wpływ rasy i innych czynników socjoekonomicznych i zdrowotnych na wyniki związane z COVID-19. 
@@ -187,7 +188,6 @@ Statystyki opisowe zostały obliczone dla cech demograficznych, socjoekonomiczny
 Analiza wyników wykazała, iż nad 70\% pacjentów rasy czarnej w tym badaniu wymagało hospitalizacji z powodu zakażenia COVID-19, w porównaniu z zaledwie 46\% pacjentów rasy innej niż czarna. Oprócz rasy i wieku, zły stan sprawności i większa liczba chorób współistniejących wiązały się ze zwiększonym prawdopodobieństwem przyjęcia do szpitala. W szczególności, pacjenci rasy czarnej w wieku poniżej 65 lat prawie 5 razy częściej wymagali hospitalizacji z powodu COVID-19 w porównaniu z pacjentami rasy czarnej w tym samym wieku. Rasa czarna nie była związana ze zwiększoną śmiertelnością z powodu COVID-19 przed lub po skorygowaniu o cechy kliniczne i socjoekonomiczne. Badanie wykazało, że pacjenci rasy czarnej są od 2 do 3 razy bardziej narażeni na konieczność hospitalizacji niż pacjenci rasy białej po skorygowaniu czynników zakłócających, w tym wieku, płci, chorób współistniejących i dochodów, a prawdopodobieństwo ich śmierci z powodu zakażenia COVID-19 jest ponad 5 razy większe.
 
 %---obrazek---------
-
 \begin{figure}[h]
 \centering
 \includegraphics[width=15cm]{NY-racial-disparities.jpg}
@@ -237,14 +237,14 @@ Podsumowując, zaobserwowano znaczący wpływ pomiędzy COVID-19 a zmiennymi met
 % --- chapter ---------------------------------------------------------
 \clearpage
 \section{Opis zbioru danych}
+\label{chapter:data-set}
 
-- liczebność oraz źródło zbioru danych \\
-- opisy zmiennych \\
-- rozkład zmiennych \\
-- charakterystyki zmiennych (np. średnie, odchylenia std ) \\
-- charakterystyka brakujących danych \\
-- problemy wynikające z brakujących danych
-
+%- liczebność oraz źródło zbioru danych \\
+%- opisy zmiennych \\
+%- rozkład zmiennych \\
+%- charakterystyki zmiennych (np. średnie, odchylenia std ) \\
+%- charakterystyka brakujących danych \\
+%- problemy wynikające z brakujących danych
 
 Do przeprowadzenia badania zostały użyte 3 zbiory danych: 
 \begin{itemize}
@@ -264,7 +264,7 @@ Zbiór danych pochodzi z zastrzeżonych zasobów Centers for Disease Control and
   \centering
 \resizebox{15cm}{!}{
 \centering
-\csvautotabular[respect underscore=true]{a.csv}
+\csvautotabular[respect underscore=true]{data/zmienne_CDC.csv}
 }
 \caption{Zmienne ze zbioru CDC użyte w dalszej części pracy.}
 \label{table:zmienneCDC}
@@ -342,17 +342,27 @@ Kolejnym etapem było dowiązanie powstałego w poprzednim kroku zbioru ze zbior
 Ostatnim krokiem było odrzucenie niepożądanych zmiennych z powstałego zbioru danych. Ten etap był konieczny gdyż niektóre zmienne nie miały bezpośredniego związku z wyjaśnieniem przedmiotu tej pracy. Odrzuconymi zmiennymi były:  \emph{county\_fips\_code},  \emph{res\_county}, \emph{res\_state}, \emph{cdc\_case\_earliest\_dt} oraz \emph{date\_month}.
 
 
+\begin{table}[H]
+  \centering
+\resizebox{15cm}{!}{
+\centering
+\csvautotabular[respect underscore=true]{data/zmienne_ostateczne.csv}
+}
+\caption{Opis zmiennych w finalnym zbiorze danych}
+\label{table:zmienne-finalne}
+\end{table}
+
 % --- chapter ---------------------------------------------------------
 \clearpage
 \section{Metody}
 
-- opis kolejności obliczeń/transformacji/budowy modelu \\
-- opis użytego modelu (docelowo: xgboost) oraz jego zasadność względem niezbalansowanej próby\\
-- opis metod walidacji oraz jakości modelu (F1-score, accuracy) \\
-- opis sposobu interpretacji wpływu zmiennych objaśniających na zmienną objaśnianą (docelowo: SHAP)
+%- opis kolejności obliczeń/transformacji/budowy modelu \\
+%- opis użytego modelu (docelowo: xgboost) oraz jego zasadność względem niezbalansowanej próby\\
+%- opis metod walidacji oraz jakości modelu (F1-score, accuracy) \\
+%- opis sposobu interpretacji wpływu zmiennych objaśniających na zmienną objaśnianą (docelowo: SHAP)
 
 \subsection{Podział zbioru na treningowy, walidacyjny i testowy}
-
+\label{chapter:train-test-split}
 W uczeniu maszynowym powszechnym zadaniem jest badanie i konstruowanie algorytmów, które potrafią uczyć się na podstawie danych i dokonywać predykcji na ich podstawie. \cite{kohavi1998} Model jest początkowo dopasowywany do zbioru danych treningowych, który jest zbiorem przykładów używanych do dopasowania parametrów (np. wag połączeń między neuronami w sztucznych sieciach neuronowych) modelu. Model (np. sieć neuronowa lub naiwny klasyfikator Bayesa) jest trenowany na zbiorze danych treningowych za pomocą metody uczenia nadzorowanego, na przykład za pomocą metod optymalizacji, takich jak opadanie gradientowe lub stochastyczne opadanie gradientowe. W praktyce, zbiór danych szkoleniowych często składa się z par wektora wejściowego (lub skalara) i odpowiadającego mu wektora wyjściowego (lub skalara), gdzie klucz odpowiedzi jest powszechnie oznaczany jako cel (lub etykieta). Bieżący model jest uruchamiany z zestawem danych treningowych i wytwarza wynik, który jest następnie porównywany z celem, dla każdego wektora wejściowego w zestawie danych treningowych. W oparciu o wynik porównania i określony algorytm uczenia się, parametry modelu są dostosowywane. Dopasowanie modelu może obejmować zarówno selekcję zmiennych, jak i estymację parametrów.
 
 Następnie, dopasowany model jest używany do przewidywania odpowiedzi dla obserwacji w drugim zbiorze danych zwanym zbiorem danych walidacyjnych. Zbiór danych walidacyjnych zapewnia bezstronną ocenę dopasowania modelu na zbiorze danych treningowych podczas dostrajania hiperparametrów modelu (np. liczba jednostek ukrytych - warstw i szerokości warstw - w sieci neuronowej). Walidacyjne zbiory danych mogą być użyte do regularyzacji poprzez wczesne zatrzymanie (zatrzymanie treningu, gdy błąd na walidacyjnym zbiorze danych wzrasta, ponieważ jest to oznaką przepasowania do zbioru treningowego). Ta prosta procedura jest skomplikowana w praktyce przez fakt, że błąd zbioru walidacyjnego może wahać się podczas treningu, tworząc wiele lokalnych minimów. Ta komplikacja doprowadziła do powstania wielu reguł ad hoc służących do określania, kiedy przepełnienie naprawdę się rozpoczęło.
@@ -365,7 +375,7 @@ Docelowy zbiór danych użyty w tej pracy został losowo podzielony na treningow
 
 XGBoost to biblioteka oparta na licencji otwartego kodu źródłowego, która dostarcza regularyzujący framework do wspomagania gradientowego dla C++, Javy, Pythona, R, Julii, Perla i Scali. XGBoost jest kompatybilny z systemami Linux, Windows i macOS. Działa na pojedynczej maszynie, jak również na frameworkach przetwarzania rozproszonego Apache Hadoop, Apache Spark i Apache Flink. 
 
-Klasyfikator XGBoost posiada wiele hiperparametrów, które mogłyby posłużyć do strojenia modelu. Najważniejsze z nich zostały użyte do stworzenia optymalnego modelu dla tej pracy:
+Klasyfikator XGBoost posiada wiele hiperparametrów, które mogłyby posłużyć do strojenia modelu. Najwrażliwsze z nich zostały iteracyjnie wybrane do stworzenia optymalnego modelu dla tej pracy. Pozostałe, mający niski wpływ, przyjęły domyślne wartości zalecone przez autorów biblioteki. Iteracyjnie dopasowywane hiperparametry to:
 \begin{itemize}
  \item \emph{learning\_rate} - Tempo uczenia modelu. Zmniejszanie wielkości kroków w aktualizacji zapobiega przeszacowaniu modelu.
  \item \emph{max\_depth} - Maksymalna głębokość drzewa. Zwiększenie tej wartości sprawi, że model będzie bardziej złożony i prawdopodobnie obszerniejszy.
@@ -406,21 +416,118 @@ Ze względu na szerokie spektrum własności oraz celność tego wskaźnika F1-s
 
 \subsubsection{Dokładność}
 
-W rozpoznawaniu wzorców, wyszukiwaniu informacji i klasyfikacji (uczenie maszynowe), precyzja (ang. precision)  - zwana również pozytywną wartością predykcyjną - jest frakcją odpowiednich instancji wśród odzyskanych instancji. Zarówno precyzja, jak i recall są zatem oparte na trafności.
+W przypadku zadań klasyfikacyjnych terminy \emph{prawdziwie dodatni (tp)}, \emph{prawdziwie ujemny (tn)}, \emph{fałszywie dodatni (fp)} i \emph{fałszywie ujemny (fn)} porównują wyniki testowanego klasyfikatora z wiarygodną oceną zewnętrzną. Terminy pozytywny i negatywny odnoszą się do przewidywań klasyfikatora (czasami znanych jako oczekiwania), a terminy prawdziwy i fałszywy odnoszą się do tego, czy przewidywania te odpowiadają zewnętrznemu osądowi (czasami nazywanemu jako obserwacja). \cite{fawcett2005}
 
-W przypadku zadań klasyfikacyjnych terminy \emph{prawdziwie dodatni (tp)} , \emph{prawdziwie ujemny (tn)}, \emph{fałszywie dodatni (fp)} i \emph{fałszywie ujemny (fn)} porównują wyniki testowanego klasyfikatora z wiarygodną oceną zewnętrzną. Terminy pozytywny i negatywny odnoszą się do przewidywań klasyfikatora (czasami znanych jako oczekiwania), a terminy prawdziwy i fałszywy odnoszą się do tego, czy przewidywania te odpowiadają zewnętrznemu osądowi (czasami nazywanemu jako obserwacja).
+Dokładność (ang. accuracy) jest używana jako statystyczna miara tego, jak dobrze binarny test klasyfikacyjny prawidłowo identyfikuje lub wyklucza stan. Oznacza to, że dokładność jest proporcją prawidłowych przewidywań (zarówno prawdziwie pozytywnych, jak i prawdziwie negatywnych) wśród całkowitej liczby badanych przypadków. Jako takie, porównuje ono szacunki prawdopodobieństwa przed i po teście. Aby kontekst był jasny dzięki semantyce, jest ona często określana jako \emph{Rand accuracy} lub \emph{Rand index}. Jest to parametr testu.\cite{powers2015} Poniżej wzór dokładności:
+\[ Accuracy = \frac{tp + tn}{tp + tn + fp + fn} \]
 
+Miara dokładności sprawdza się przede wszystkim w zbalansowych zbiorach. Ze względu na niską liczbę pozytywnych wartości zmiennej objaśnianej \emph{death\_yn} miara ta posłużyła wyłącznie do opisu docelowego modelu.
 
+\subsubsection{Tablica pomyłek}
 
+W dziedzinie uczenia maszynowego, a konkretnie w problematyce klasyfikacji statystycznej, macierz pomyłek, zwana też macierzą błędów, jest specyficznym układem tabelarycznym pozwalającym na wizualizację działania algorytmu, zazwyczaj uczenia nadzorowanego (w uczeniu nienadzorowanym nazywana jest zwykle macierzą dopasowania). Każdy wiersz macierzy reprezentuje instancje w klasie rzeczywistej, natomiast każda kolumna reprezentuje instancje w klasie przewidywanej, lub odwrotnie - oba warianty są spotykane w literaturze. Nazwa macierzy pochodzi stąd, że pozwala ona łatwo zorientować się, czy system nie myli dwóch klas (tj. powszechnie błędnie przypisuje jedną klasę do drugiej).
+
+Jest to specjalny rodzaj tabeli kontyngencji, z dwoma wymiarami (\emph{rzeczywisty} i \emph{przewidywany}) oraz identycznymi zestawami \emph{klas} w obu wymiarach (każda kombinacja wymiaru i klasy jest zmienną w tabeli kontyngencji). \cite{powers2011}
+
+Oprócz wizualnego przedstawienia jakości modelu tablica pomyłek może również posłużyć do obliczenia innych wskaźników takich jak czułość czy swoistość. Ze względu na zaprezentowane właściwości macierz błędów została użyta do opisu docelowego modelu.
+
+\subsubsection{Krzywa ROC}
+
+Krzywa charakterystyki odbiornika (ang. receiver operating characteristic curve, ROC curve) jest wykresem, który ilustruje zdolność diagnostyczną systemu klasyfikatora binarnego w miarę zmiany progu dyskryminacji. Metoda ta została pierwotnie opracowana dla operatorów wojskowych odbiorników radarowych począwszy od 1941 roku, co doprowadziło do jej nazwy.
+
+Krzywa ROC jest tworzona poprzez wykreślenie współczynnika prawdziwych pozytywów (TPR) względem współczynnika fałszywych pozytywów (FPR) przy różnych ustawieniach progu. Współczynnik prawdziwych pozytywów jest również znany jako czułość, wycofanie lub prawdopodobieństwo wykrycia w uczeniu maszynowym. Współczynnik fałszywych wyników jest również znany jako prawdopodobieństwo fałszywego wyniku i może być obliczany jako (1 - specyficzność). Można o niej również myśleć jako o wykresie mocy jako funkcji błędu typu I reguły decyzyjnej (gdy wydajność jest obliczana tylko na podstawie próbki populacji, można o niej myśleć jako o estymatorze tych wielkości). Krzywa ROC jest więc czułością lub wycofaniem w funkcji błędu. Ogólnie rzecz biorąc, jeśli znane są rozkłady prawdopodobieństwa zarówno dla wykrywania, jak i fałszywego wyniku, krzywą ROC można wygenerować, wykreślając funkcję rozkładu kumulatywnego (obszar pod rozkładem prawdopodobieństwa od do progu dyskryminacji) prawdopodobieństwa wykrywania na osi y versus funkcję rozkładu kumulatywnego prawdopodobieństwa fałszywego wyniku na osi x.
+
+Analiza ROC dostarcza narzędzi do wyboru możliwie optymalnych modeli i odrzucania modeli suboptymalnych niezależnie od (i przed określeniem) kontekstu kosztów lub rozkładu klasy. Analiza ROC jest w bezpośredni i naturalny sposób związana z analizą kosztów i korzyści przy podejmowaniu decyzji diagnostycznych.\cite{fawcett2005}
+
+Jeśli poprawnie używane, krzywe ROC są bardzo potężnym narzędziem jako statystyczna miara wydajności w teorii wykrywania/klasyfikacji i testowaniu hipotez, ponieważ pozwalają na posiadanie wszystkich istotnych wielkości w jednym wykresie. Ze względu na te właściwości krzywa ROC została użyta do przedstawienia jakości docelowego modelu stworzonego dla tej pracy.
+
+\subsection{Interpretacja wyników modelu przez wartości SHAP}
+
+SHAP (SHapley Additive exPlanations) jest podejściem opartym na teorii gier, służącym do wyjaśniania wyników dowolnego modelu uczenia maszynowego. Interpretując model wytrenowany na zbiorze cech jako funkcję wartości w koalicji graczy, wartości Shapleya zapewniają naturalny sposób określenia, które cechy przyczyniają się do predykcji. Łączy on optymalną alokację zasobów z lokalnymi wyjaśnieniami, wykorzystując klasyczne wartości Shapleya z teorii gier i ich pokrewne rozszerzenia.
+
+Celem SHAP jest wyjaśnienie predykcji instancji x poprzez obliczenie wkładu każdej cechy do predykcji. Metoda objaśniania SHAP oblicza wartości Shapleya z koalicyjnej teorii gier. Wartości cech instancji danych działają jak gracze w koalicji. Wartości Shapley'a mówią nam jak sprawiedliwie rozdzielić \emph{wypłatę} (= predykcję) pomiędzy cechy. Gracz może być indywidualną wartością cechy, np. dla danych tabelarycznych. Gracz może być również grupą wartości cech. Na przykład, aby wyjaśnić obraz, piksele mogą być pogrupowane w super piksele, a predykcja rozdzielona pomiędzy nie. Jedną z innowacji, którą SHAP wnosi jest to, że wyjaśnienie wartości Shapleya jest reprezentowane jako metoda addytywnego przypisania cech, model liniowy. Ten kontekst łączy LIME i wartości Shapleya. SHAP definiuje model objaśniający jako:
+\[ g(z') =  \phi_0 + \sum_{j=1}^{M}\phi_j \]
+gdzie g jest modelem objaśniającym, \( z'\in\{0,1\}^{M}\)  jest wektorem koalicji, M jest maksymalną wielkością koalicji, a \( \phi_j \in\mathbb{R}\) jest przypisaniem atrybutu cechy dla cechy j, wartości Shapleya. \cite{lundberg2017}
+
+Ze względu na brak bezpośredniej metody interpretacji parametrów modelu XGBoost konieczne było zastosowanie odrębnej techniki interpretacji wyników modelu. Uwzględniając ten aspekt oraz mając na uwadze uniwersalność podejścia SHAP dla nieliniowych modeli postanowiono zastosować go do interpretacji docelowego modelu.
 
 
 % --- chapter ---------------------------------------------------------
 \clearpage
 \section{Wyniki i dyskusja}
+%- przedstawienie wzkaźników jakości modelu \\
+%- przstawienie wyników SHAP oraz ich interpretacja \\
+%- porównanie wniosków uzyskanych z opracowanego modelu z wnioskami z przywołanej literatury naukowej \\ 
 
-- przedstawienie wzkaźników jakości modelu \\
-- przstawienie wyników SHAP oraz ich interpretacja \\
-- porównanie wniosków uzyskanych z opracowanego modelu z wnioskami z przywołanej literatury naukowej \\ 
+
+W celu określenia wpływu wybranych zmiennych meteorologicznych i demograficznych, charakterystyk biologicznych pacjenta oraz występujących symptomów na przebieg zakażenia COVID-19 opracowano model uczenia maszynowego. Model w swej konstrukcji wykorzystuję algorytm XGBoost. Do jego budowy posłużono się zbiorem danych opisanym w rozdziale \ref{chapter:data-set}. Zbiór danych to 154 816 obserwację na które składa się 29 zmiennych objaśniających oraz zmienna objaśniana \emph{death\_yn}. Zmienna objaśniana przyjmuję wartość 0 dla \emph{Ozdrowienie} oraz 1 dla \emph{Zgon}.
+
+\subsection{Jakość modelu}
+
+Za pomocą metody opisanej w rozdziale \ref{chapter:train-test-split} w pierwszej kolejności ustalono optymalne hiperparametry modelu XGBoost dla opracowanego zbioru danych. Za najlepszy zestaw hipermarketów uznano ten, który pozwala na skonstruowanie modelu o najwyższej wartości F1-score Przyjęły one następujące wartości:
+\begin{itemize}
+ \item \emph{learning\_rate} = 0,05
+ \item \emph{max\_depth} = 4
+ \item \emph{min\_child\_weight} = 5
+ \item \emph{scale\_pos\_weight} = 5
+ \item \emph{gamma} = 0,0
+\end{itemize}
+
+Znając optymalne wartości hiperparametrów opracowano finalny model XGBoost. Predykcja na zbiorze testowym wykazała, że dokładność (\emph{ang. accuracy}) wynosi 0,981 a F1-score jest równy 0,451. Następnie wykonano obliczenia umożliwiające stworzenie macierzy nieufności oraz wykresu krzywej ROC.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{roc.png}
+\caption{Wykres krzywej ROC. Poziomo odłożony odsetek wyników fałszywie dodatnich, pionowo odsetek wyników prawdziwie dodatnich. }
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{conf_matrix.png}
+\caption{Macierz nieufności dla klas \emph{Ozdrowienie} oraz \emph{Zgon}. Poziomo odłożone wartości uzyskane przez predykcje, pionowo wartości prawdziwe. }
+\end{figure}
+
+Wysoki wynik dokładności oraz położenie krzywej ROC blisko punktu (0,1) świadczą o wysokiej jakości opracowanego modelu. Niestety, wynik F1-score oraz analiza macierzy nieufności dostarczają przeciwnych wniosków. Niższe wyniki tych miar są w pewnym stopniu spowodowane przez niezbalansowany zbiór danych. Klasa \emph{Ozdrowienie} stanowi 98,6\% wszystkich obserwacji zmiennej \emph{death\_yn} co prowadzi do niedoszacowania przez model klasy \emph{Zgon}. W celu weryfikacji tego założenia skonstruowano zbalansowany zbiór testowy i na nim przeprowadzono dodatkową predykcje. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{conf_matrix_balanced.png}
+\caption{Macierz nieufności dla klas \emph{Ozdrowienie} oraz \emph{Zgon} - zbalansowany zbiór testowy.}
+\end{figure}
+
+Przy użyciu zbalansowanego zbioru testowego wartość F1-score wzrosła do 0,716. Wysoka wartość obserwacji fałszywie negatywnych świadczy o wcześniej przypuszczanym niedoszacowaniu przez model klasy \emph{Zgon}.
+
+Kolejnym aspektem, który mógł wpłynąć na niski wynik F1-score jest niewystarczająca ilość istotnych zmiennych. Szczegółowe charakterystyki biologiczne pacjenta oraz przekrojowe zmienne środowiskowe mogą przez niewielkie odchylenia stać się kluczowe w procesie rekonwalescencji pacjentów. Przez ograniczone zasoby upublicznionych danych, a także zawężone możliwości obliczeniowe, opracowanie wysokiej klasy modelu dla wybranego problemu okazuję się zadaniem blisko nieosiągalnym.
+
+\subsection{Interpretacja modelu}
+
+Po skonstruowaniu optymalnego modelu uczenia maszynowego przystąpiono do etapu jego interpretacji. W tym kroku wykorzystano metodę SHAP (SHapley Additive exPlanations). W pierwszej kolejności obliczono wartość Shapleya dla wszystkich zmiennych w każdej obserwacji. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{shap_abs.png}
+\caption{Średnie z bezwzględnych wartości SHAP  - wielkości oddziaływania zmiennych na wynik modelu.}
+\end{figure}
+
+Dzięki przeprowadzonym obliczeniom wyłoniono zbiór zmiennych, które najsilniej oddziaływały na wynik modelu. Najbardziej istotną zmienną objaśniającą okazała się \emph{medcond\_yn} ze średnią bezwzględnych wartości SHAP na poziomie 0,648. Kolejną silnie wpływającą na model zmienną okazała się \emph{medcond\_yn} (średnia z bezwzględnych wartości SHAP = 0,555). Silnie oddziałującymi na wynik modelu okazały się również przedziały wiekowe, a w szczególności przedziały krańcowe. Znaczący wpływ miały również objawy występujący przy zachorowaniu przy czym najbardziej najbardziej istotną zmienną była \emph{headache\_yn} (średnia z bezwzględnych wartości SHAP = 0,176). Mniejszy wpływ miały zmienne atmosferyczne, dane demografic
+zne oraz zmienne biologiczne takie jak grupa etniczna czy płeć.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{shap_summary.png}
+\caption{Rozkłady wartości SHAP z uwzględnieniem wartości zmiennych. Kolor czerwony wskazuję na wysoką wartość zmiennej, niebieski na niską wartość zmiennej.}
+\end{figure}
+
+Kolejną zaletą wartości SHAP jest możliwość interpretacji kierunku wpływu zmiennych na wynik predykcji modelu. Z przeprowadzonych obliczeń wynika, iż zarówno zmienna \emph{medcond\_yn} jak i \emph{hosp\_yn} przy wartości 1 wpływa podwyższa prawdopodobieństwo pozytywnego wynik predykcji. Warto zauważyć, że zmienna \emph{medcond\_yn} przy wartości 0 wpływa bardzo silnie na obniżenie prawdopodobieństwa wystąpienia pozytywnej predykcji. Analiza kolejnych rozkładów zmiennych związanych z grupą wiekową wskazuję na silny wzrost prawdopodobieństwa pozytywnego wyniku predykcji przy wzroście wieku pacjenta. Rozkład wartości SHAP dla zmiennych związanych z symptomami świadczą o małym prawdopodobieństwie uzyskania pozytywnego wyniku przy występowaniu stosunkowo lekkich objawów (zmienne: \emph{headache\_yn}, \emph{runnose\_yn} oraz \emph{sthroat\_yn}. Przeciwny rezultat dają zmienne określające ciężkie symptomy tj. \emph{abxchest\_yn} oraz \emph{sob\_yn}. Rozkład wartości SHAP dla zmiennych zmiennej \emph{sex} wskazuję na przesunięcie w kierunku pozytywnego wyniku predykcji w sytuacji gdy COVID-19 został stwierdzony u mężczyzny. Niska wartość zmiennej \emph{avg\_temp} również przyczynia się do zmniejszenia prawdopodobieństwa pozytywnego wyniku predykcji. 
+
+\subsection{Zestawienie uzyskanych wyników z wnioskami z przywołanej literatury}
+
+Wnioski zebrane dzięki analizie zbudowanego modelu uczenia maszynowego są w wielu przypadkach zbieżne z wnioskami badań przytoczonych w rozdziale \ref{chapter:przeglad-literatury}. Najistotniejsza zmienna modelu, którą okazała się \emph{medcond\_yn}, opisująca występowanie chorób współistniejących u pacjenta, została przytoczona zarówno w badaniu \emph{Racial disparities in patients with coronavirus disease 2019 infection and gynecologic malignancy} oraz \emph{Radiographic severity index in COVID-19 pneumonia: relationship to age and sex in 783 Italian patients}. Autorzy obydwóch tych badań uwzględniają znaczący wpływ tej cechy na dalszy przebieg choroby. Kolejną zbieżną obserwacją jest znacząca dodatnia korelacja wieku pacjenta z prawdopodobieństwem zgonu pacjenta z rozpoznanym COVID-19. Wniosek ten został wyciągnięty w dwóch uprzednio wymienionych badaniach. Wysoce istotna zmienna dla modelu \emph{abxchest\_yn}, opisująca nieprawidłowości wykryte przez RTG klatki, została we wspomnianym  włoskim badaniu uznana za najważniejszą cechę rokującą dalszy przebieg choroby. Kolejnym wnioskiem z tego projektu był wpływ płci pacjenta na prawdopodobieństwo zgonu pacjenta. Wyniki tego badania oraz wnioski płynące dzięki analizie sporządzonego modelu wskazują, iż większe prawdopodobieństwo zgonu odnotowuję się dla płci męskiej. Zarówno w badaniu \emph{Effect of meteorological factors on COVID-19 cases in Bangladesh} oraz dzięki sporządzonemu modelowi uzyskano podobne wnioski na temat wpływu średniej dobowej temperatury na nasilenie wirusa SARS‑CoV‑2. Zawarte informacje w obydwóch przypadkach wskazuję na dodatnią korelacje pomiędzy tymi zmiennymi.
+
+Niektóre wnioski badań nie uzyskały potwierdzenia w zestawieniu z wynikami uzyskanymi przez analizę sporządzonego modelu. Jednym z takich wniosków jest wpływ rasy i etniczności na przebieg choroby COVID-19 postulowany w przytoczonym badaniu wykonanym w Nowym Yorku (USA). Zmienne związane z rasą i etnicznością okazały się najmniej istotne dla wyniku predykcji opracowanego modelu. Podobnie miała się większość zmiennych atmosferycznych. W przytoczonym badaniu przeprowadzonym na terytorium Bangladeszu wnioskowano o nasileniu wirusa przy określonych warunkach pogodowych. Jednocześnie warto zauważyć, iż z analizy opracowanego modelu wynika iż jedyną zmienną, która zauważalnie wpływa na wynik modelu jest średnia dobowa temperatura. Pozostałe zmienne atmosferyczne miały niski lub pomijalny wpływ na wynik modelu.
+
+
 
 % --- chapter ---------------------------------------------------------
 \clearpage
@@ -443,14 +550,14 @@ W przypadku zadań klasyfikacyjnych terminy \emph{prawdziwie dodatni (tp)} , \em
 % ---------------------------------------------------------------------
 \clearpage
 \section{Dodatek: Ważne rzeczy do dodania}
-
+ 
 
 
 
 % --- bibliography ----------------------------------------------------
 \clearpage
 \bibliographystyle{agsm}
-\bibliography{refs}
+\bibliography{refs.bib}
 
 % --- abstract --------------------------------------------------------
 \clearpage
