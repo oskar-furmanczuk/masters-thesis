@@ -171,6 +171,35 @@ Warszawa 2021
 %- przegląd litertury dotyczącej koronawirusa - artykuły poświęcone badaniom wpływu czynników biologicznych na przebieg choroby \\
 %- związek pracy z ekonomią \\
 
+\subsection{Tło oraz problem badawczy}
+
+Rok 2020 z pewnością zostanie zapisany na kartach historii jako rok rozpoczęcia jednej z największych pandemii jaka dotknęła naszą cywilizację. Wirus SARS-CoV-2, wywołujący chorobę COVID-19, pozbawił życia milionów ludzi w każdym zakątku naszej planety. Oprócz strat w postaci ofiar śmiertelnych pandemia COVID-19 spowodowała istotne zmiany we wszystkich gałęziach światowej gospodarki. Globalna pandemia zachwiała parkietami giełdowymi, nasiliła fluktuacje na rynku pracy oraz wpłynęła na sytuację finansową wielu przedsiębiorstw i gospodarstw domowych. Niestety, większość z tych następstw miała negatywny, a czasem destruktywny w skutkach finał. Z powodu surowych obostrzeń, ustalanych w celu walki z epidemią, wiele osób straciło zatrudnienie oraz liczne przedsiębiorstwa ogłosiły upadłość. Z kolei te następstwa spowodowały częste problemy ze spłatami zaciągniętych zobowiązań kredytowych. Władzę dotkniętych kryzysem krajów zostały również zmuszone do modyfikacji polityki budżetowej i monetarnej.  
+
+W celu ograniczenia tych wyniszczających procesów niezbędne jest opracowanie efektywnej strategii walki z epidemią. Jedną ze składowych takiej strategii mogłoby stać się wyselekcjonowanie osób najbardziej narażonych na ciężki przebieg tej choroby. Grupa tych osób mogłaby zostać objęta wzmożoną obserwacją w celu zapewnienia im intensywnej opieki medycznej w przypadku wykrycia wirusa SARS-CoV-2 w ich organizmie. Przez zmniejszenie ryzyka prawdopodobieństwa poniesienia wysokich strat w ofiarach śmiertelnych możliwy byłby powrót do sposobu funkcjonowania gospodarki sprzed pandemii. 
+
+Do przeprowadzenia opisanej selekcji niezbędne byłoby wyodrębnienie zestawu cech umożliwiających właściwe rozpoznanie osób z grupy podwyższonego ryzyka. W czasie sporządzania tej pracy nie istniał tak ustandaryzowany zbiór zmiennych.
+
+\subsection{Cel i hipoteza badawcza}
+
+Głównym celem pracy jest przedstawienie argumentów na rzecz hipotezy, że możliwe jest określenie zbioru zmiennych, które w istotny sposób determinują przebieg choroby COVID-19. Istotność definiowana jest przez zestawienie otrzymanych miar stopnia determinacji przebiegu choroby przez wybrane zmienne z wynikami uzyskanymi przez losowy wybór. Przebieg zachorowania zostanie ograniczony do dwóch stanów: \emph{Ozdrowienie} - w przypadkach powrotu do zdrowia oraz \emph{Zgon} - w przypadkach gdy choroba zakończyła się zgonem.
+
+Kolejnym celem badania jest określenie poziomu oraz kierunku wpływu wybranych cech na przebieg choroby. Zarówno ten jak i poprzedni punkt zostanie opracowany za pośrednictwem, skonstruowanego na tą potrzebę, modelu uczenia maszynowego. Ostatnim celem pracy będzie przedstawienie literatury z zakresu badań nad COVID-19 oraz opisanie wybranych metod i miar wykorzystywanych w uczynieniu maszynowym. 
+
+\subsection{Organizacja pracy}
+
+Praca dyplomowa pod tytułem \emph{Determinanty przebiegu choroby COVID-19} złożona jest z 6 rozdziałów. Struktura została opracowana w klasycznym akademickim podejściu, a charakter pracy można sklasyfikować jako empiryczny.
+
+Rozdział \emph{Przegląd literatury} przybliża opracowane do tej pory badania zajmujące się opisem przebiegu choroby COVID-19. Przytoczone w nim badania poruszają tematykę wpływu cech biologicznych i zmiennych środowiskowych na proces rekonwalescencji pacjentów z wykrytym COVID-19.
+
+W rozdziale \emph{Opis zbioru danych} zostały zdefiniowane użyte w pracy zbiory danych. Przedstawiono ich pochodzenie, wykonane na nich operacje oraz potencjalne trudności mogące wyniknąć z ich użycia. W tym rozdziale opisano także charakter i własności użytych zmiennych.
+
+Rozdział \emph{Metody} zawiera opis wszystkich technik jakie zostały użyte na etapach przygotowania danych, tworzenia modelu oraz jego interpretacji. Opisano wybrane metody z zakresu uczenia maszynowego oraz uargumentowano istotę ich użycia w tej pracy.
+
+W rozdziale \emph{Wyniki i dyskusja} zostały zebrane wartości wszystkich istotnych miar jakie uzyskano przy budowie, walidacji i interpretacji modelu. Opracowano także wnioski płynące z tych miar. Następnie porównano otrzymane wyniki z wnioskami badań przywołanych w rozdziale \emph{Przegląd literatury}.
+
+Ostatni rozdział, czyli \emph{Zakończenie} zwiera podsumowanie pracy. Opracowane w nim zostały wnioski płynące z pracy oraz możliwe ich wykorzystanie w innych badaniach.
+
+
 % --- chapter ---------------------------------------------------------
 \cleardoublepage
 \section{Przegląd literatury}
@@ -184,7 +213,7 @@ Charakterystyka pacjentów obejmowała wiek, podawaną przez siebie rasę i poch
 Rasę sklasyfikowano jako 2 grupy: czarnoskórzy versus nie-czarnoskórzy (biali plus pozostali). Zgrupowano pacjentów, którzy identyfikowali się jako Azjaci, Amerykańscy Indianie lub Rdzenni mieszkańcy Alaski, a także rdzenni Hawajczycy lub mieszkańcy Wysp Pacyfiku do innej grupy ze względu na niską liczbę w każdej kategorii. Biorąc pod uwagę wysoki odsetek białych w grupie innej niż czarna, rasy następnie podzielono na trzy grupy - czarnoskórzy, biali oraz pozostali. Łącznie 193 pacjentów - 67 czarnoskórych oraz 126 pozostałych.
 
 Statystyki opisowe zostały obliczone dla cech demograficznych, socjoekonomicznych, zdrowotnych, związanych z nowotworem oraz związanych z COVID-19 u pacjentów rasy czarnej i innej niż czarna. Zmienne ciągłe zostały opisane jako mediany i przedziały międzykwartylowe (IQR) i zostały porównane między grupami za pomocą testu sumy rang Wilcoxona. Zmienne kategoryczne przedstawiono jako częstości i proporcje, a następnie zostały porównane między grupami za pomocą testu chi kwadrat. Wskaźniki hospitalizacji i śmiertelności obliczono wśród pacjentów rasy czarnej i innej niż czarna w populacji ogólnej lub w subpopulacji stratyfikowanej przez inne zmienne kategoryczne, a następnie porównano je za pomocą testu chi kwadrat.
-
+	
 Analiza wyników wykazała, iż nad 70\% pacjentów rasy czarnej w tym badaniu wymagało hospitalizacji z powodu zakażenia COVID-19, w porównaniu z zaledwie 46\% pacjentów rasy innej niż czarna. Oprócz rasy i wieku, zły stan sprawności i większa liczba chorób współistniejących wiązały się ze zwiększonym prawdopodobieństwem przyjęcia do szpitala. W szczególności, pacjenci rasy czarnej w wieku poniżej 65 lat prawie 5 razy częściej wymagali hospitalizacji z powodu COVID-19 w porównaniu z pacjentami rasy czarnej w tym samym wieku. Rasa czarna nie była związana ze zwiększoną śmiertelnością z powodu COVID-19 przed lub po skorygowaniu o cechy kliniczne i socjoekonomiczne. Badanie wykazało, że pacjenci rasy czarnej są od 2 do 3 razy bardziej narażeni na konieczność hospitalizacji niż pacjenci rasy białej po skorygowaniu czynników zakłócających, w tym wieku, płci, chorób współistniejących i dochodów, a prawdopodobieństwo ich śmierci z powodu zakażenia COVID-19 jest ponad 5 razy większe.
 
 %---obrazek---------
@@ -198,7 +227,7 @@ Autorzy badania wskazują za przyczynę gorszych rokowań czarnoskórych czynnik
 
 \subsection{Wpływ wieku oraz płci na przebieg COVID-19}
 
-Jednym z badań które zgłębia przebieg infekcji COVID-19 u pacjentów różnej płci z podziałem na grupy wiekowe jest "Radiographic severity index in COVID-19 pneumonia: relationship to age and sex in 783 Italian patients". Badnie zostało przeprowadzone na grupie 783 (532 mężczyzn i 251 kobiet) włoskich pacjentów z laboratoryjnie stwierdzonym COVID-19. Osoby poniżej 20 roku życia zostali wykluczeni z badania. Pozostali pacjenci zostali podzieleni na 7 grup wiekowych: 20-29 lat (grupa A), 30-39 lat (grupa B), 40-49 lat (grupa C), 50-59 lat (grupa D), 60-69 lat (grupa E), 70-79 lat (grupa F) oraz powyżej 80 lat (grupa G). Do interpretacji stanu pacjenta posłużono się osiemnasto-poziomowym wskaźnikiem oceny sprawności płuc uzyskiwanym przez analizę prześwietleń klatki piersiowej (dalej: CXR).
+Jednym z badań które zgłębia przebieg infekcji COVID-19 u pacjentów różnej płci z podziałem na grupy wiekowe jest \emph{Radiographic severity index in COVID-19 pneumonia: relationship to age and sex in 783 Italian patients}. Badnie zostało przeprowadzone na grupie 783 (532 mężczyzn i 251 kobiet) włoskich pacjentów z laboratoryjnie stwierdzonym COVID-19. Osoby poniżej 20 roku życia zostali wykluczeni z badania. Pozostali pacjenci zostali podzieleni na 7 grup wiekowych: 20-29 lat (grupa A), 30-39 lat (grupa B), 40-49 lat (grupa C), 50-59 lat (grupa D), 60-69 lat (grupa E), 70-79 lat (grupa F) oraz powyżej 80 lat (grupa G). Do interpretacji stanu pacjenta posłużono się osiemnasto-poziomowym wskaźnikiem oceny sprawności płuc uzyskiwanym przez analizę prześwietleń klatki piersiowej (dalej: CXR).
 
 Mediana wieku wynosiła 65 lat (zakres międzykwartylowy, 55-74 lata). Spośród włączonych pacjentów, 10 (1,3\%) było z grupy A, 29 (3,7\%) z grupy B, 80 (10,2\%) z grupy C, 168 (21,5\%) z grupy D, 196 (25\%) z grupy E, 210 (26,8\%) z grupy F i 90 (11,5\%) z grupy G. Dla każdej grupy, test Manna-Whitneya U został użyty do porównania wyników CXR mężczyzn i kobiet. Korelacja rang Spearmana została zastosowana do oceny zależności pomiędzy wynikiem CXR a wiekiem. Test Kruskala-Wallisa zastosowano również w celu określenia, czy istnieją istotne różnice w punktacji CXR pomiędzy grupami wiekowymi. Wartości p $\leq$ 0,05 uznano za istotne statystycznie.
 
@@ -214,7 +243,10 @@ Podsumowując, autorzy badania wskazują na istotny wpływ wieku na śmiertelno�
 
 \subsection{Zmienne meteorologiczne jako determinanty częstotliwości zachorowań na COVID-19}
 
-Opublikowany w wrześniu 2020 artykuł „Effect of meteorological factors on COVID-19 cases in Bangladesh” koncertuje się na opisie wpływu warunków pogodowych na możliwość zarażenia się koronawirusem. Badanie na temat którego powstał wspomniany artykuł przeprowadzono na terytorium Bangladeszu. Kraj znajduję się w strefie klimatu zwrotnikowego, a na jego terytorium występują 3 główne pory roku: pre-monsun,monsun, post-mosum. Ze względu na złożone warunki klimatyczne i dużą gęstość zaludnienia obszar ten jest uznawany za wysoce wrażliwy na zmiany klimatu.
+Opublikowany w wrześniu 2020 artykuł \emph{Effect of meteorological factors on COVID-19 cases in Bangladesh} koncertuje się na opisie wpływu warunków pogodowych na możliwość zarażenia się koronawirusem. Badanie na temat którego powstał wspomniany artykuł przeprowadzono na terytorium Bangladeszu. Kraj znajduję się w strefie klimatu zwrotnikowego, a na jego terytorium występują 3 główne pory roku: pre-monsun,monsun, post-mosum. Ze względu na złożone warunki klimatyczne i dużą gęstość zaludnienia obszar ten jest uznawany za wysoce wrażliwy na zmiany klimatu.
+
+
+Badanie jest również wartościowe ze względu na możliwość powiązania poziomu ryzyka zachorowania na COVID-19 z samym przebiegiem choroby. Takie założenie znalazło potwierdzenie w 2 opracowanych już badaniach. W pierwszym z nich,  badaniu \emph{Virological assessment of hospitalized patients with COVID-2019} podjęto się opisania przebiegu zachorowania z punktu widzenia rodzaju jak i natężenia cząsteczek wirusa.\cite{wolfel2020} Jednocześnie w badaniu \emph{SARS-CoV-2 concentrations and virus-laden aerosol size distributions in outdoor air in north and south of Italy} stwierdzono fakt o wysokim znaczeniu stężenia wirusa i częstości zachorowań. \cite{chirizzi2020}
 
 Do przeprowadzenia badania zebrano dane z 43 stacji meteorologicznych z których wyodrębniono informacje na temat kilkunastu parametrów atmosferycznych (maksymalna temperatura dobowa (MaxT), minimalna temperatura dobowa (MinT), siła wiatru (WS), wilgotność relatywna (RH), wilgotność absolutna (AH) itp.) dla odpowiadającym im regionów. Na podstawie danych o przypadkach zachorowani na COVID-19 z odpowiadających im obszarów ustalono wskaźnik relatywnego ryzyka (RR), który oceniał prawdopodobieństwo zarażenia się SARS-CoV-2 w określonym dniu. Ze względu na od 2 do 14 dniowy okres inkubacji wirusa przyjęto maksymalnie 14 dniowe opóźnienie między obserwacjami meteorologicznymi, a poszczególnymi przypadkami zgłoszonych zachorowań.
 
@@ -224,13 +256,13 @@ RH wykazało silny pozytywny znaczący związek z przypadkami COVID-19 w Singapu
 
 Przedstawiono zależność opóźnionej odpowiedzi RR na wzrost o 1 jednostkę wszystkich wskaźników meteorologicznych w różnych dniach opóźnienia (do 14 dni). Największe RR dla MaxT wyniosło 1,00 (95\% CI 0,99-1,01) w opóźnieniu 6-dniowym, a najmniejsze 0,92 (95\% CI 0,88-0,95) bez opóźnienia. Największe RR dla MinT wyniosło 1,04 (95\% CI 1,01-1,06) w opóźnieniu 11-dniowym, a najmniejsze 1,01 (95\% CI 0,99-1,02) w opóźnieniu 2-dniowym. 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=15cm]{clmate-factors.jpg}
 \caption{Pojedyncze efekty MaxT, MinT, DT, WS, RH i AH. Laboratorium Y oznacza wartość ryzyka względnego (RR)}
 \end{figure}
 
-Podsumowując, zaobserwowano znaczący wpływ pomiędzy COVID-19 a zmiennymi meteorologicznymi. Temperatura, może odgrywać istotną rolę w procesach życiowych człowieka oraz w zakresie ograniczania i kontroli epidemii. Ponadto, oddnotowano wpływ siły wiatru na propagowanie epidemii. Wiatr może wpływać na czas zawieszenia koronawirusa i jego rozprzestrzenianie się. Badanie wykazało, że wskaźnik RR wyraźnie wzrósł, w czasie gdy WS podwyższył się o ponad 21 km/h. Stężenie koronawirusa może być rozcieńczone przez podwyższony WS, co może stanowić prawdopodobne wyjaśnienie tego wyniku. Można wnioskować, iż temperatura i prędkość wiatru wykazują silny związek z wybuchem i przebiegiem epidemii COVID-19 w Bangladeszu. \cite{hasanuzzaman2020}
+Podsumowując, zaobserwowano znaczący wpływ pomiędzy nasileniem COVID-19 a zmiennymi meteorologicznymi. Temperatura, może odgrywać istotną rolę w procesach życiowych człowieka oraz w zakresie ograniczania i kontroli epidemii. Ponadto, oddnotowano wpływ siły wiatru na propagowanie epidemii. Wiatr może wpływać na czas zawieszenia koronawirusa i jego rozprzestrzenianie się. Badanie wykazało, że wskaźnik RR wyraźnie wzrósł, w czasie gdy WS podwyższył się o ponad 21 km/h. Stężenie koronawirusa może być rozrzedzone przez podwyższony WS, co może stanowić prawdopodobne wyjaśnienie tego wyniku. Można wnioskować, iż temperatura i prędkość wiatru wykazują silny związek z rozpoczęciem i przebiegiem choroby COVID-19 w Bangladeszu. \cite{hasanuzzaman2020}
 
 
 
@@ -367,7 +399,7 @@ W uczeniu maszynowym powszechnym zadaniem jest badanie i konstruowanie algorytm�
 
 Następnie, dopasowany model jest używany do przewidywania odpowiedzi dla obserwacji w drugim zbiorze danych zwanym zbiorem danych walidacyjnych. Zbiór danych walidacyjnych zapewnia bezstronną ocenę dopasowania modelu na zbiorze danych treningowych podczas dostrajania hiperparametrów modelu (np. liczba jednostek ukrytych - warstw i szerokości warstw - w sieci neuronowej). Walidacyjne zbiory danych mogą być użyte do regularyzacji poprzez wczesne zatrzymanie (zatrzymanie treningu, gdy błąd na walidacyjnym zbiorze danych wzrasta, ponieważ jest to oznaką przepasowania do zbioru treningowego). Ta prosta procedura jest skomplikowana w praktyce przez fakt, że błąd zbioru walidacyjnego może wahać się podczas treningu, tworząc wiele lokalnych minimów. Ta komplikacja doprowadziła do powstania wielu reguł ad hoc służących do określania, kiedy przepełnienie naprawdę się rozpoczęło.
 
-Finalnie, testowy zbiór danych jest zbiorem danych używanym w celu zapewnienia bezstronnej oceny ostatecznego dopasowania modelu na treningowym zbiorze danych. Jeśli dane w testowym zbiorze danych nigdy nie były używane w trenowaniu modelu (na przykład w walidacji krzyżowej), testowy zbiór danych jest również nazywany zbiorem danych przejściowych (ang. holdout dataset). Termin "zbiór walidacyjny" jest czasami używany zamiast terminu "zbiór testowy" (np. jeżeli oryginalny zbiór danych został podzielony tylko na dwa podzbiory, zbiór testowy może być określany jako zbiór walidacyjny).\cite{brownlee2017}
+Finalnie, testowy zbiór danych jest zbiorem danych używanym w celu zapewnienia bezstronnej oceny ostatecznego dopasowania modelu na treningowym zbiorze danych. Jeśli dane w testowym zbiorze danych nigdy nie były używane w trenowaniu modelu (na przykład w walidacji krzyżowej), testowy zbiór danych jest również nazywany zbiorem danych przejściowych (ang. holdout dataset). Termin \emph{zbiór walidacyjny} jest czasami używany zamiast terminu \emph{zbiór testowy} (np. jeżeli oryginalny zbiór danych został podzielony tylko na dwa podzbiory, zbiór testowy może być określany jako zbiór walidacyjny).\cite{brownlee2017}
 
 Docelowy zbiór danych użyty w tej pracy został losowo podzielony na treningowy, walidacyjny i testowy w stosunku 3:1:1. Etap ten umożliwił w kolejnych krokach dobranie właściwych parametrów oraz zbudowanie optymalnego modelu.
 
@@ -410,9 +442,9 @@ Najwyższą możliwą wartością F1-score jest 1.0, wskazując idealną precyzj
 
 \[ F_1 = \frac{2}{recall^{-1} + precision^{-1}} = 2 * \frac{precision * recall}{precision + recall} \]
 
-F1-score został użyty do wyznaczenia najlepszych hiperparametrów. Po podstawieniu kolejnych kombinacji hiperparametrów do budowanego modelu dla danych treningowych obliczana była wartość F1-score. Za najlepsze hiperparametry uznano te dla, których model przetestowany na danych walidacyjnych osiągnął najwyższą wartość F1-score. 
+F1-score został użyty do wyznaczenia najlepszych hiperparametrów. Po podstawieniu kolejnych kombinacji hiperparametrów do budowanego modelu dla danych treningowych obliczana była wartość F1-score. Za najlepsze hiperparametry uznano te dla, których model przetestowany na danych walidacyjnych osiągnął najwyższą wartość F1-score.\cite{tharwat2018}
 
-Ze względu na szerokie spektrum własności oraz celność tego wskaźnika F1-score został użyty również do przedstawienia jakości docelowego modelu. Wykonano to przez przetestowanie modelu na danych testowych i późniejszym obliczeniu wartości F1-score.
+Ze względu na szerokie spektrum własności oraz celność tego wskaźnika F1-score został użyty również do przedstawienia jakości docelowego modelu. Wykonano to przez przetestowanie modelu na danych testowych i późniejszym obliczeniu wartości F1-score.\cite{powers2011}
 
 \subsubsection{Dokładność}
 
@@ -421,7 +453,7 @@ W przypadku zadań klasyfikacyjnych terminy \emph{prawdziwie dodatni (tp)}, \emp
 Dokładność (ang. accuracy) jest używana jako statystyczna miara tego, jak dobrze binarny test klasyfikacyjny prawidłowo identyfikuje lub wyklucza stan. Oznacza to, że dokładność jest proporcją prawidłowych przewidywań (zarówno prawdziwie pozytywnych, jak i prawdziwie negatywnych) wśród całkowitej liczby badanych przypadków. Jako takie, porównuje ono szacunki prawdopodobieństwa przed i po teście. Aby kontekst był jasny dzięki semantyce, jest ona często określana jako \emph{Rand accuracy} lub \emph{Rand index}. Jest to parametr testu.\cite{powers2015} Poniżej wzór dokładności:
 \[ Accuracy = \frac{tp + tn}{tp + tn + fp + fn} \]
 
-Miara dokładności sprawdza się przede wszystkim w zbalansowych zbiorach. Ze względu na niską liczbę pozytywnych wartości zmiennej objaśnianej \emph{death\_yn} miara ta posłużyła wyłącznie do opisu docelowego modelu.
+Miara dokładności sprawdza się przede wszystkim w zbalansowych zbiorach. Ze względu na niską liczbę pozytywnych wartości zmiennej objaśnianej \emph{death\_yn} miara ta posłużyła wyłącznie do opisu docelowego modelu.\cite{tharwat2018}
 
 \subsubsection{Tablica pomyłek}
 
@@ -480,7 +512,6 @@ Znając optymalne wartości hiperparametrów opracowano finalny model XGBoost. P
 \includegraphics[width=15cm]{roc.png}
 \caption{Wykres krzywej ROC. Poziomo odłożony odsetek wyników fałszywie dodatnich, pionowo odsetek wyników prawdziwie dodatnich. }
 \end{figure}
-
 
 \begin{figure}[H]
 \centering
