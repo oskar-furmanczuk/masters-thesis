@@ -181,7 +181,7 @@ Do przeprowadzenia opisanej selekcji niezbędne byłoby wyodrębnienie zestawu c
 
 \subsection{Cel i hipoteza badawcza}
 
-Głównym celem pracy jest przedstawienie argumentów na rzecz hipotezy, że możliwe jest określenie zbioru zmiennych, które w istotny sposób determinują przebieg choroby COVID-19. Istotność definiowana jest przez zestawienie otrzymanych miar stopnia determinacji przebiegu choroby przez wybrane zmienne z wynikami uzyskanymi przez losowy wybór. Przebieg zachorowania zostanie ograniczony do dwóch stanów: \emph{Ozdrowienie} - w przypadkach powrotu do zdrowia oraz \emph{Zgon} - w przypadkach gdy choroba zakończyła się zgonem.
+Głównym celem pracy jest przedstawienie argumentów na rzecz hipotezy, że możliwe jest określenie zbioru zmiennych, które w istotny sposób determinują przebieg choroby COVID-19. Istotność definiowana jest przez zestawienie otrzymanych miar stopnia determinacji przebiegu choroby przez wybrane zmienne z wynikami uzyskanymi przez losową klasyfikację. Przebieg zachorowania zostanie ograniczony do dwóch stanów: \emph{Ozdrowienie} - w przypadkach powrotu do zdrowia oraz \emph{Zgon} - w przypadkach gdy choroba zakończyła się zgonem.
 
 Kolejnym celem badania jest określenie poziomu oraz kierunku wpływu wybranych cech na przebieg choroby. Zarówno ten jak i poprzedni punkt zostanie opracowany za pośrednictwem, skonstruowanego na tą potrzebę, modelu uczenia maszynowego. Ostatnim celem pracy będzie przedstawienie literatury z zakresu badań nad COVID-19 oraz opisanie wybranych metod i miar wykorzystywanych w uczynieniu maszynowym. 
 
@@ -285,12 +285,9 @@ Do przeprowadzenia badania zostały użyte 3 zbiory danych:
   \item dane demograficzne  dla poszczególnych części USA - pochodzą z portalu ArcGis
 \end{itemize}
 
-
-
 \subsection{Zbiór danych dotyczący poszczególnych przypadków zachorowań na COVID-19}
 
-
-Zbiór danych pochodzi z zastrzeżonych zasobów Centers for Disease Control and Prevention (CDC). Zbiór ten został udostępniony po bezpośredniej prośbie skierowanej do jego właścicieli i za ich pozwoleniem został wykorzystany w tej pracy. Zebrane są w nim podstawowe dane medyczne osób ze stwierdzonym COVID-19 zarejestrowanych przez amerykańską służbę zdrowia z okresu od pierwszego potwierdzonego przypadku zachorowania (styczeń 2020) do końca lutego 2021 roku - łącznie 20,5 mln obserwacji. Zmienne, które zostały użyte w tej pracy zostały scharakteryzowane w tabeli \ref{table:zmienneCDC} .
+Zbiór danych pochodzi z zastrzeżonych zasobów Centers for Disease Control and Prevention (CDC). Zbiór ten został udostępniony po bezpośredniej prośbie skierowanej do jego właścicieli i za ich pozwoleniem został wykorzystany w tej pracy. Zebrane są w nim podstawowe dane medyczne osób ze stwierdzonym COVID-19 zarejestrowanych przez amerykańską służbę zdrowia z okresu od pierwszego potwierdzonego przypadku zachorowania (styczeń 2020) do końca lutego 2021 roku - łącznie 20,5 mln obserwacji. Zmienne, które zostały użyte w tej pracy zostały scharakteryzowane w tabeli \ref{table:zmienneCDC}. W pracy wykorzystano obserwacje pochodzące wyłącznie z kontynentalnej części Stanów Zjednoczonych.
 
 \begin{table}[H]
   \centering
@@ -304,7 +301,7 @@ Zbiór danych pochodzi z zastrzeżonych zasobów Centers for Disease Control and
 
 W zbiorze danych występują 3 typy brakujących danych. Najczęściej występującym jest \emph{Unknown} i jak autor zbioru danych opisuje kodowany był w przypadku udzielenia dokładnie takiej odpowiedzi do pytania szpitalnej ankiety. Kolejnym typem jest  \emph{Missing} i występuję w przypadkach nie udzielenia jakiejkolwiek odpowiedzi. Najrzadziej występującym typem wskazującym brak danych jest \emph{NaN} i zakodowany został w miejscach logicznej nieścisłości danych oraz w przypadkach błędów na poziomie zapisu danych w centralnej bazie.
 
-Pomimo bardzo dużej ilości obserwacji wadą zbioru okazał się niski udział w pełni opisanych przypadków (większość zmiennych zawiera mniej niż 25\% uzupełnionych danych). Obliczone częstości występowania oraz korelacje brakujących danych pomiędzy zmiennymi z uwzględnieniem oraz bez uwzględnienia typów braków danych nie wskazała przyczyny dużego natężenia braku danych. Uznano również, że lokalizacja brakujących danych jest niedeterministyczna. Ze względu na jakościową naturę zmiennych oraz wysoki udział brakujących danych nie możliwe było przeprowadzenie imputacji brakujących danych. Znikoma wartość informacja niesiona przez brak danych przyczyniłaby się do zaburzenia interpretacji wyników dalszej części pracy dlatego podjęto decyzję o odrzuceniu wszystkich niepełnych obserwacji. Dalsza część pracy odnosi się do wyselekcjonowanych tym sposobem 171 147 pełnych obserwacji. 
+Pomimo bardzo dużej ilości obserwacji wadą zbioru okazał się niski udział w pełni opisanych przypadków (większość zmiennych zawiera mniej niż 25\% uzupełnionych danych). Obliczone częstości występowania oraz korelacje brakujących danych pomiędzy zmiennymi z uwzględnieniem oraz bez uwzględnienia typów braków danych nie wskazała przyczyny dużego natężenia braku danych. Uznano również, że lokalizacja brakujących danych jest niedeterministyczna. Ze względu na jakościową naturę zmiennych oraz wysoki udział brakujących danych nie możliwe było przeprowadzenie imputacji brakujących danych. Znikoma wartość informacja niesiona przez brak danych przyczyniłaby się do zaburzenia interpretacji wyników dalszej części pracy dlatego podjęto decyzję o odrzuceniu wszystkich niepełnych obserwacji. Dalsza część pracy odnosi się do wyselekcjonowanych tym sposobem 154 816 pełnych obserwacji. 
 
 W zbiorze udostępnionym przez CDC pacjenci zostali podzieleni na 8 grup wiekowych o rozpiętości 10 lat, a dla najstarszych stworzono grupę 80+. Zmienna \emph{race\_ethnicity\_combined} przyjmuje wartości: \emph{American Indian/Alaska Native, Non-Hispanic} dla natywnych mieszkańców Ameryki Północnej, \emph{Asian, Non-Hispanic} dla rasy żółtej, \emph{Black, Non-Hispanic} dla rasy czarnej, \emph{Hispanic/Latino} dla mniejszości latynoskiej, \emph{Native Hawaiian/Other Pacific Islander, Non-Hispanic} dla natywnych mieszkańców wysp Pacyfiku, \emph{White, Non-Hispanic} dla rasy białej oraz \emph{Multiple/Other, Non-Hispanic} dla pozostałych. Wartości zmiennej \emph{sex} zostały przekodowane na 1 dla mężczyzn oraz 0 dla kobiet. Wartości dla pozostałych zmiennych dwumianowych zostały przekodowane na 1 dla wartości \emph{Yes} oraz na 0 dla \emph{No}.
 
@@ -509,8 +506,8 @@ Znając optymalne wartości hiperparametrów opracowano finalny model XGBoost. P
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=15cm]{roc.png}
-\caption{Wykres krzywej ROC. Poziomo odłożony odsetek wyników fałszywie dodatnich, pionowo odsetek wyników prawdziwie dodatnich. }
+\includegraphics[width=10cm]{roc.png}
+\caption{Wykres krzywej ROC. Poziomo odłożony odsetek wyników fałszywie dodatnich, pionowo odsetek wyników prawdziwie dodatnich. Czerwona linia przerywana opisuję losową klasyfikację. }
 \end{figure}
 
 \begin{figure}[H]
@@ -523,11 +520,17 @@ Wysoki wynik dokładności oraz położenie krzywej ROC blisko punktu (0,1) świ
 
 \begin{figure}[H]
 \centering
+\includegraphics[width=10cm]{roc-bs.png}
+\caption{Wykres krzywej ROC - zbalansowany zbiór testowy.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
 \includegraphics[width=10cm]{conf_matrix_balanced.png}
 \caption{Macierz nieufności dla klas \emph{Ozdrowienie} oraz \emph{Zgon} - zbalansowany zbiór testowy.}
 \end{figure}
 
-Przy użyciu zbalansowanego zbioru testowego wartość F1-score wzrosła do 0,716. Wysoka wartość obserwacji fałszywie negatywnych świadczy o wcześniej przypuszczanym niedoszacowaniu przez model klasy \emph{Zgon}.
+Zarówno w przypadku wyjściowego oraz zbalansowanego zbioru testowego krzywa ROC znajduję się powyżej czerwonej, przerywanej linii opisującej losową klasyfikacje. Fakt, ten świadczy o dokładniejszej predykcji modelu w porównaniu z losową klasyfikacją. Przy użyciu zbalansowanego zbioru testowego wartość F1-score wzrosła do 0,716. Wysoka wartość obserwacji fałszywie negatywnych świadczy o wcześniej przypuszczanym niedoszacowaniu przez model klasy \emph{Zgon}.
 
 Kolejnym aspektem, który mógł wpłynąć na niski wynik F1-score jest niewystarczająca ilość istotnych zmiennych. Szczegółowe charakterystyki biologiczne pacjenta oraz przekrojowe zmienne środowiskowe mogą przez niewielkie odchylenia stać się kluczowe w procesie rekonwalescencji pacjentów. Przez ograniczone zasoby upublicznionych danych, a także zawężone możliwości obliczeniowe, opracowanie wysokiej klasy modelu dla wybranego problemu okazuję się zadaniem blisko nieosiągalnym.
 
@@ -563,17 +566,16 @@ Niektóre wnioski badań nie uzyskały potwierdzenia w zestawieniu z wynikami uz
 % --- chapter ---------------------------------------------------------
 \clearpage
 \section{Zakończenie}
+%- podsumowanie pracy \\
 
+Przez opracowanie modelu uczenia maszynowego a następnie jego analizę udało się potwierdzić hipotezę, iż możliwe jest określenie zbioru zmiennych, które w istotny sposób determinują przebieg choroby COVID-19. Ustalono, także wielkość oraz kierunek wpływu wybranych zmiennych na wynik predykcji modelu. Spośród zaproponowanych zmiennych najistotniejsza okazała się \emph{medcond\_yn}, która określa występowanie współistniejących chorób. Jej pozytywna wartość najintensywniej podwyższała prawdopodobieństwo zgonu spośród wszystkich ujętych zmiennych. Bardzo duży wpływ na przebieg zachorowania okazał się również mieć wiek osoby u której stwierdzono COVID-19. Skuteczne wykorzystanie metod uczenia maszynowego udowodniło ich wysoką użyteczność w poszerzaniu wiedzy z zakresu zdrowia i chorób człowieka.
 
-- podsumowanie pracy \\
+Praca dyplomowa \emph{Determinanty przebiegu choroby COVID-19} dostarczyła wielu ważnych wniosków na rzecz opisu przebiegu COVID-19. Zebrane obserwacje stanowią potwierdzenie ale również rozszerzenie opublikowanych do tej pory badań nad COVID-19. Wraz z dotychczas znanymi materiałami naukowymi informację zebrane w tej pracy mogłyby stanowić podstawę do opracowywania efektywnej strategi walki z pandemią. Taka inicjatywa umożliwiłaby ocalenie wiele ludzkich istnień, a pośrednio także ustabilizowania sytuacji światowej gospodarki. 
+
 
 
 % --- chapter -------
---------------------------------------------------
-\clearpage
-\section{Literatura}
-
-
+-------------------------------------------------- 
 
 % --- appendices ------------------------------------------------------
 \appendix
@@ -607,7 +609,12 @@ Niektóre wnioski badań nie uzyskały potwierdzenia w zestawieniu z wynikami uz
 \addcontentsline{toc}{section}{Streszczenie}
 \section*{Streszczenie}
 
-Tutaj zamieszczają Państwo streszczenie pracy. Streszczenie powinno być długości około pół strony.
+%Tutaj zamieszczają Państwo streszczenie pracy. Streszczenie powinno być długości około pół strony.
+
+Praca dyplomowa pod tytułem \emph{Determinanty przebiegu choroby COVID-19} za przedmiot badania podejmuję wpływ cech biologicznych (m.in. wiek, płeć i rasa), zmiennych meteorologicznych oraz demograficznych na przebieg (ozdrowienie lub zgon) choroby COVID-19. Na podstawie danych o potwierdzonych przypadkach zachorowania na COVID-19 w USA, danych meteorologicznych oraz demograficznych stworzono model uczenia maszynowego XGBoost. Do interpretacji wyników modelu wykorzystano analizę SHAP. W pracy sporządzono również przegląd wybranych badań związanych z opisem COVID-19 oraz scharakteryzowano metody i miary z obszaru uczenia maszynowego, które zostały użyte na poszczególnych etapach budowy i walidacji modelu.
+
+Opracowany model oraz jego analiza dostarczyła wniosku, że cechą która bardzo silnie determinuje przebieg choroby COVID-19 jest posiadanie przez zarażonego chorób współistniejących. Zaobserwowano także wysoki wpływ wieku na śmiertelność COVID-19. Osoby powyżej 70 roku były w grupie najwyższego ryzyka. Symptomem, który najbardziej determinował przebieg choroby okazał się być ból głowy. W tym etapie wykazano również, iż rasa oraz grupa etniczna miała bardzo niski wpływ na wynik predykcji.
+
 
 
 \end{document}
