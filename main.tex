@@ -21,13 +21,14 @@
 \usepackage[centering, left=3.5cm, right=2.5cm, textheight=24cm]{geometry}
 \usepackage{csvsimple}
 \usepackage[T1]{fontenc}
+
 % --- packages for citations ------------------------------------------
 \usepackage[square,numbers]{natbib}
 \AtBeginDocument{\renewcommand{\harvardand}{i}}
 
 % --- package for automatic insertion of R code -----------------------
 \usepackage{listings}
-\lstset{language=R,%
+\lstset{language=Python,%
    numbers=left,%
    tabsize=3,%
    numberstyle=\footnotesize,%
@@ -217,13 +218,20 @@ Statystyki opisowe zostały obliczone dla cech demograficznych, socjoekonomiczny
 Analiza wyników wykazała, iż nad 70\% pacjentów rasy czarnej w tym badaniu wymagało hospitalizacji z powodu zakażenia COVID-19, w porównaniu z zaledwie 46\% pacjentów rasy innej niż czarna. Oprócz rasy i wieku, zły stan sprawności i większa liczba chorób współistniejących wiązały się ze zwiększonym prawdopodobieństwem przyjęcia do szpitala. W szczególności, pacjenci rasy czarnej w wieku poniżej 65 lat prawie 5 razy częściej wymagali hospitalizacji z powodu COVID-19 w porównaniu z pacjentami rasy czarnej w tym samym wieku. Rasa czarna nie była związana ze zwiększoną śmiertelnością z powodu COVID-19 przed lub po skorygowaniu o cechy kliniczne i socjoekonomiczne. Badanie wykazało, że pacjenci rasy czarnej są od 2 do 3 razy bardziej narażeni na konieczność hospitalizacji niż pacjenci rasy białej po skorygowaniu czynników zakłócających, w tym wieku, płci, chorób współistniejących i dochodów, a prawdopodobieństwo ich śmierci z powodu zakażenia COVID-19 jest ponad 5 razy większe.
 
 %---obrazek---------
-\begin{figure}[h]
-\centering
-\includegraphics[width=15cm]{NY-racial-disparities.jpg}
-\caption{Odsetki hospitalizacji (po lewej) i dane dotyczące śmiertelności (po prawej) zilustrowane dla pacjentów rasy czarnej w badanych dzielnicach Nowego Yorku (USA)}
+
+\begin{figure}[hbt]
+  \centering
+
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=15cm]{NY-racial-disparities.jpg}
+  \end{subfigure}
+
+  \captionsetup{margin=10pt,font=small,labelfont=bf,width=.8\textwidth}
+
+  \caption{Odsetki hospitalizacji (po lewej) i dane dotyczące śmiertelności (po prawej) zilustrowane dla pacjentów rasy czarnej w badanych dzielnicach Nowego Yorku (USA) \textit{Źródło:} \cite{borghesi2020}.}\label{fig:xxx1}
 \end{figure}
 
-Autorzy badania wskazują za przyczynę gorszych rokowań czarnoskórych czynniki takie jak ograniczony dostęp do świadczeń opieki zdrowotnej, strukturalne i społeczne uwarunkowania opieki medycznej, rasizm i dyskryminację. Ponadto, Afroamerykanie są bardziej narażeni na współistniejące choroby medyczne, o których wiadomo, że są czynnikami ryzyka ciężkiego zakażenia COVID-19, w tym nadciśnienie tętnicze, cukrzycę, choroby nerek i układu oddechowego. W tej grupie badawczej większy odsetek czarnych pacjentów w wieku poniżej 65 lat miał więcej niż 3 współistniejące choroby i charakteryzował się większą częstością występowania nadciśnienia tętniczego, otyłości i cukrzycy w porównaniu z pacjentami rasy innej niż czarna w tej grupie wiekowej. Czarnoskórzy pacjenci mieli również częściej zamieszkiwali obszary poniżej granicy ubóstwa. \cite{borghesi2020}
+Autorzy badania wskazują za przyczynę gorszych rokowań czarnoskórych czynniki takie jak ograniczony dostęp do świadczeń opieki zdrowotnej, strukturalne i społeczne uwarunkowania opieki medycznej, rasizm i dyskryminację. Ponadto, Afroamerykanie są bardziej narażeni na współistniejące choroby medyczne, o których wiadomo, że są czynnikami ryzyka ciężkiego zakażenia COVID-19, w tym nadciśnienie tętnicze, cukrzycę, choroby nerek i układu oddechowego. W tej grupie badawczej większy odsetek czarnych pacjentów w wieku poniżej 65 lat miał więcej niż 3 współistniejące choroby i charakteryzował się większą częstością występowania nadciśnienia tętniczego, otyłości i cukrzycy w porównaniu z pacjentami rasy innej niż czarna w tej grupie wiekowej. Czarnoskórzy pacjenci mieli również częściej zamieszkiwali obszary poniżej granicy ubóstwa \cite{borghesi2020}.
 
 \subsection{Wpływ wieku oraz płci na przebieg COVID-19}
 
@@ -233,20 +241,27 @@ Mediana wieku wynosiła 65 lat (zakres międzykwartylowy, 55-74 lata). Spośród
 
 Wynik CXR był istotnie wyższy u mężczyzn niż u kobiet tylko w grupach D, E i F (p < 0,020). Stwierdzono istotną korelację między wynikiem CXR a wiekiem zarówno u mężczyzn, jak i u kobiet (rho = 0,205, p < 0,0001 dla mężczyzn; rho = 0,310, p < 0,0001). U mężczyzn wynik CXR w grupach D, E, F i G był znamiennie wyższy niż w grupach A, B i C (ryc. 3). U kobiet wynik CXR w grupach E, F i G był znamiennie wyższy niż w grupach A i B (ryc. 3). Wynik CXR w grupie G był również znamiennie wyższy niż w grupach C, D i E. Wynik CXR w grupie F był znamiennie wyższy niż w grupie C.
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=15cm]{age-sex.jpg}
-\caption{Rozkład wyników badania RTG klatki piersiowej (CXR) w zależności od grupy wiekowej u mężczyzn (M) i kobiet (F)}
+
+\begin{figure}[hbt]
+  \centering
+
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=15cm]{age-sex.jpg}
+  \end{subfigure}
+
+  \captionsetup{margin=10pt,font=small,labelfont=bf,width=.8\textwidth}
+
+  \caption{Rozkład wyników badania RTG klatki piersiowej (CXR) w zależności od grupy wiekowej u mężczyzn (M) i kobiet (F) \textit{Źródło:} \cite{wang2020}.}\label{fig:xxx2}
 \end{figure}
 
-Podsumowując, autorzy badania wskazują na istotny wpływ wieku na śmiertelność przy infekcji COVID-19. Stwierdzono, że mężczyźni w wieku 50 lat lub starsi i kobiety w wieku 80 lat lub starsze wykazywali najwyższe ryzyko rozwoju ciężkiej choroby płuc. \cite{wang2020}
+Podsumowując, autorzy badania wskazują na istotny wpływ wieku na śmiertelność przy infekcji COVID-19. Stwierdzono, że mężczyźni w wieku 50 lat lub starsi i kobiety w wieku 80 lat lub starsze wykazywali najwyższe ryzyko rozwoju ciężkiej choroby płuc \cite{wang2020}.
 
 \subsection{Zmienne meteorologiczne jako determinanty częstotliwości zachorowań na COVID-19}
 
 Opublikowany w wrześniu 2020 artykuł \emph{Effect of meteorological factors on COVID-19 cases in Bangladesh} koncertuje się na opisie wpływu warunków pogodowych na możliwość zarażenia się koronawirusem. Badanie na temat którego powstał wspomniany artykuł przeprowadzono na terytorium Bangladeszu. Kraj znajduję się w strefie klimatu zwrotnikowego, a na jego terytorium występują 3 główne pory roku: pre-monsun,monsun, post-mosum. Ze względu na złożone warunki klimatyczne i dużą gęstość zaludnienia obszar ten jest uznawany za wysoce wrażliwy na zmiany klimatu.
 
 
-Badanie jest również wartościowe ze względu na możliwość powiązania poziomu ryzyka zachorowania na COVID-19 z samym przebiegiem choroby. Takie założenie znalazło potwierdzenie w 2 opracowanych już badaniach. W pierwszym z nich,  badaniu \emph{Virological assessment of hospitalized patients with COVID-2019} podjęto się opisania przebiegu zachorowania z punktu widzenia rodzaju jak i natężenia cząsteczek wirusa.\cite{wolfel2020} Jednocześnie w badaniu \emph{SARS-CoV-2 concentrations and virus-laden aerosol size distributions in outdoor air in north and south of Italy} stwierdzono fakt o wysokim znaczeniu stężenia wirusa i częstości zachorowań. \cite{chirizzi2020}
+Badanie jest również wartościowe ze względu na możliwość powiązania poziomu ryzyka zachorowania na COVID-19 z samym przebiegiem choroby. Takie założenie znalazło potwierdzenie w 2 opracowanych już badaniach. W pierwszym z nich,  badaniu \emph{Virological assessment of hospitalized patients with COVID-2019} podjęto się opisania przebiegu zachorowania z punktu widzenia rodzaju jak i natężenia cząsteczek wirusa \cite{wolfel2020}. Jednocześnie w badaniu \emph{SARS-CoV-2 concentrations and virus-laden aerosol size distributions in outdoor air in north and south of Italy} stwierdzono fakt o wysokim znaczeniu stężenia wirusa i częstości zachorowań \cite{chirizzi2020}.
 
 Do przeprowadzenia badania zebrano dane z 43 stacji meteorologicznych z których wyodrębniono informacje na temat kilkunastu parametrów atmosferycznych (maksymalna temperatura dobowa (MaxT), minimalna temperatura dobowa (MinT), siła wiatru (WS), wilgotność relatywna (RH), wilgotność absolutna (AH) itp.) dla odpowiadającym im regionów. Na podstawie danych o przypadkach zachorowani na COVID-19 z odpowiadających im obszarów ustalono wskaźnik relatywnego ryzyka (RR), który oceniał prawdopodobieństwo zarażenia się SARS-CoV-2 w określonym dniu. Ze względu na od 2 do 14 dniowy okres inkubacji wirusa przyjęto maksymalnie 14 dniowe opóźnienie między obserwacjami meteorologicznymi, a poszczególnymi przypadkami zgłoszonych zachorowań.
 
@@ -256,13 +271,21 @@ RH wykazało silny pozytywny znaczący związek z przypadkami COVID-19 w Singapu
 
 Przedstawiono zależność opóźnionej odpowiedzi RR na wzrost o 1 jednostkę wszystkich wskaźników meteorologicznych w różnych dniach opóźnienia (do 14 dni). Największe RR dla MaxT wyniosło 1,00 (95\% CI 0,99-1,01) w opóźnieniu 6-dniowym, a najmniejsze 0,92 (95\% CI 0,88-0,95) bez opóźnienia. Największe RR dla MinT wyniosło 1,04 (95\% CI 1,01-1,06) w opóźnieniu 11-dniowym, a najmniejsze 1,01 (95\% CI 0,99-1,02) w opóźnieniu 2-dniowym. 
 
+
 \begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{clmate-factors.jpg}
-\caption{Pojedyncze efekty MaxT, MinT, DT, WS, RH i AH. Laboratorium Y oznacza wartość ryzyka względnego (RR)}
+  \centering
+
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=15cm]{clmate-factors.jpg}
+  \end{subfigure}
+
+  \captionsetup{margin=10pt,font=small,labelfont=bf,width=.8\textwidth}
+
+  \caption{Pojedyncze efekty MaxT, MinT, DT, WS, RH i AH. Laboratorium Y oznacza wartość ryzyka względnego (RR) \textit{Źródło:} \cite{hasanuzzaman2020}.}\label{fig:xxx3}
 \end{figure}
 
-Podsumowując, zaobserwowano znaczący wpływ pomiędzy nasileniem COVID-19 a zmiennymi meteorologicznymi. Temperatura, może odgrywać istotną rolę w procesach życiowych człowieka oraz w zakresie ograniczania i kontroli epidemii. Ponadto, oddnotowano wpływ siły wiatru na propagowanie epidemii. Wiatr może wpływać na czas zawieszenia koronawirusa i jego rozprzestrzenianie się. Badanie wykazało, że wskaźnik RR wyraźnie wzrósł, w czasie gdy WS podwyższył się o ponad 21 km/h. Stężenie koronawirusa może być rozrzedzone przez podwyższony WS, co może stanowić prawdopodobne wyjaśnienie tego wyniku. Można wnioskować, iż temperatura i prędkość wiatru wykazują silny związek z rozpoczęciem i przebiegiem choroby COVID-19 w Bangladeszu. \cite{hasanuzzaman2020}
+
+Podsumowując, zaobserwowano znaczący wpływ pomiędzy nasileniem COVID-19 a zmiennymi meteorologicznymi. Temperatura, może odgrywać istotną rolę w procesach życiowych człowieka oraz w zakresie ograniczania i kontroli epidemii. Ponadto, oddnotowano wpływ siły wiatru na propagowanie epidemii. Wiatr może wpływać na czas zawieszenia koronawirusa i jego rozprzestrzenianie się. Badanie wykazało, że wskaźnik RR wyraźnie wzrósł, w czasie gdy WS podwyższył się o ponad 21 km/h. Stężenie koronawirusa może być rozrzedzone przez podwyższony WS, co może stanowić prawdopodobne wyjaśnienie tego wyniku. Można wnioskować, iż temperatura i prędkość wiatru wykazują silny związek z rozpoczęciem i przebiegiem choroby COVID-19 w Bangladeszu \cite{hasanuzzaman2020}.
 
 
 
@@ -287,17 +310,7 @@ Do przeprowadzenia badania zostały użyte 3 zbiory danych:
 
 \subsection{Zbiór danych dotyczący poszczególnych przypadków zachorowań na COVID-19}
 
-Zbiór danych pochodzi z zastrzeżonych zasobów Centers for Disease Control and Prevention (CDC). Zbiór ten został udostępniony po bezpośredniej prośbie skierowanej do jego właścicieli i za ich pozwoleniem został wykorzystany w tej pracy. Zebrane są w nim podstawowe dane medyczne osób ze stwierdzonym COVID-19 zarejestrowanych przez amerykańską służbę zdrowia z okresu od pierwszego potwierdzonego przypadku zachorowania (styczeń 2020) do końca lutego 2021 roku - łącznie 20,5 mln obserwacji. Zmienne, które zostały użyte w tej pracy zostały scharakteryzowane w tabeli \ref{table:zmienneCDC}. W pracy wykorzystano obserwacje pochodzące wyłącznie z kontynentalnej części Stanów Zjednoczonych.
-
-\begin{table}[H]
-  \centering
-\resizebox{15cm}{!}{
-\centering
-\csvautotabular[respect underscore=true]{tables/zmienne_CDC.csv}
-}
-\caption{Zmienne ze zbioru CDC użyte w dalszej części pracy.}
-\label{table:zmienneCDC}
-\end{table}
+Zbiór danych pochodzi z zastrzeżonych zasobów Centers for Disease Control and Prevention (CDC). Zbiór ten został udostępniony po bezpośredniej prośbie skierowanej do jego właścicieli i za ich pozwoleniem został wykorzystany w tej pracy. Zebrane są w nim podstawowe dane medyczne osób ze stwierdzonym COVID-19 zarejestrowanych przez amerykańską służbę zdrowia z okresu od pierwszego potwierdzonego przypadku zachorowania (styczeń 2020) do końca lutego 2021 roku - łącznie 20,5 mln obserwacji. W pracy wykorzystano obserwacje pochodzące wyłącznie z kontynentalnej części Stanów Zjednoczonych. Charakterystyka wykorzystanych zmiennych z tego zbioru danych znajduję się w tabeli \ref{table:zmienneCDC} (załącznik).
 
 W zbiorze danych występują 3 typy brakujących danych. Najczęściej występującym jest \emph{Unknown} i jak autor zbioru danych opisuje kodowany był w przypadku udzielenia dokładnie takiej odpowiedzi do pytania szpitalnej ankiety. Kolejnym typem jest  \emph{Missing} i występuję w przypadkach nie udzielenia jakiejkolwiek odpowiedzi. Najrzadziej występującym typem wskazującym brak danych jest \emph{NaN} i zakodowany został w miejscach logicznej nieścisłości danych oraz w przypadkach błędów na poziomie zapisu danych w centralnej bazie.
 
@@ -308,21 +321,24 @@ W zbiorze udostępnionym przez CDC pacjenci zostali podzieleni na 8 grup wiekowy
 Najliczniejszą grupą w zbiorze okazali się być przedstawiciele rasy białej i składają się na 73.8\% wszystkich obserwacji. Natywni mieszkańcy wysp Pacyfiku (0,38\%) oraz natywni mieszkańcy Ameryki Północnej (0,11\%) stanowią najmniej liczne grupy etniczne w opisywanym zbiorze danych. Udział procentowy kobiet jest porównywalny do udziału mężczyzn i wynosi odpowiednio 44,2\% dla mężczyzn oraz 55,8\% dla kobiet (Wykres: \ref{figure:sex-race-count})
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{race_sex_count_plot.jpg}
-\caption{Liczebność poszczególnych grup etniczno-rasowych z podziałem na płeć}
-\label{figure:sex-race-count}
+  \centering
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=15cm]{race_sex_count_plot.jpg}
+  \end{subfigure}
+  \captionsetup{margin=10pt,font=small,labelfont=bf,width=.8\textwidth}
+  \caption{Liczebność poszczególnych grup etniczno-rasowych z podziałem na płeć. \textit{Źródło:} opracowanie własne.}\label{fig:figure:sex-race-count}
 \end{figure}
 
 Najczęstszymi symptomami COVID-19 był kaszel (60,9\%), ból głowy (59,0\%) oraz bóle mięśniowe (53.1\%). Najrzadziej pacjenci informowali o dolegliwościach związanych z bólem brzucha (11,5\%) oraz nudnościami (21,5\%) W opisanym zbiorze wskaźnik hospitalizacji wyniósł 6,72\%, a wskaźnik śmiertelności 1,28\%.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{symptoms-freq.jpg}
-\caption{Częstość występowania poszczególnych objawów COVID-19}
+  \centering
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=15cm]{symptoms-freq.jpg}
+  \end{subfigure}
+  \captionsetup{margin=10pt,font=small,labelfont=bf,width=.8\textwidth}
+  \caption{Częstość występowania poszczególnych objawów COVID-19. \textit{Źródło:} opracowanie własne.}\label{fig:figure:xx4}
 \end{figure}
-
-
 
 \subsection{Zbiory danych zawierający wskaźniki atmosferyczne dla poszczególnych części USA}
 
@@ -336,11 +352,13 @@ Kolejne zbiory danych jakie użyto w tej pracy pochodzą z upublicznionych zasob
 Ze względu na fakt, iż dla niektórych hrabstw nie odnotowano żadnych obserwacji postanowiono zgrupować dane na poziomie stanów i wyliczyć dla nich średnie wartości. W zestawieniu rocznym najgorętszym stanem okazała się Floryda osiągając średnią temperaturę 72,1 \textdegree F (22,3 \textdegree C), najchłodniejszym zaś Alaska ze średnią temperaturą 32,8 \textdegree F (0,4 \textdegree C). Największa średnia roczna prędkość wiatru przypada na stan Kansas (11,2 mph) i Massachusetts (10,9 mph), najmniejsza zaś w stanie West Virginia (5,6 mph). 
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{atm-all.jpg}
-\caption{Wybrane wskaźniki atmosferyczne zagregowane na poziomie rocznym zgrupowane dla poszczególnych stanów. }
+  \centering
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=15cm]{atm-all.jpg}
+  \end{subfigure}
+  \captionsetup{margin=10pt,font=small,labelfont=bf,width=.8\textwidth}
+  \caption{Wybrane wskaźniki atmosferyczne zagregowane na poziomie rocznym zgrupowane dla poszczególnych stanów. \textit{Źródło:} opracowanie własne.}\label{fig:figure:xx4}
 \end{figure}
-
 
 \subsection{Zbiór danych zawierający dane demograficzne}
 
@@ -348,10 +366,14 @@ Ostatnim zbiorem jaki został wykorzystany w tej pracy jest zbiór \emph{USA Cou
 
 Ze względu na tematykę pracy postanowiono wykorzystać z opisanego zbioru tylko jedną zmienną, czyli \emph{POP\_SQMI} - zagęszczenie ludności na mile kwadratową. Analiza zbioru wykazała, że najmniej rzadziej zaludnione hrabstwa w USA to Lake and Peninsula, North Slope, Denali, Yakutat oraz Loving z gęstością zaludnienia na poziomie 0,1 osoby na mile kwadratowej. Wszystkie wymienione hrabstwa oprócz Loving (stan Texas) zlokalizowane są na obszarze Alaski. Najgęściej zaludnione hrabstwa to New York (73032,2 osoby na mile kwadratową), Kings (38512,3 osoby na mile kwadratową) oraz Bronx (34919,1 osoby na mile kwadratową) - wszystkie zlokalizowane w stanie New York. Gęstość zaludnienia Stanów Zjednoczonych, obliczona przez zsumowanie populacji wszystkich hrabstw i podzielenie przez sumę ich powierzchni, wynosi 91,1 osoby na mile kwadratową.
 
+
 \begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{us-desity.jpg}
-\caption{Zagęszczenie ludności zwizualizowane na mapie Stanów Zjednoczonych. }
+  \centering
+  \begin{subfigure}[t]{\textwidth}
+    \includegraphics[width=15cm]{us-desity.jpg}
+  \end{subfigure}
+  \captionsetup{margin=10pt,font=small,labelfont=bf,width=.8\textwidth}
+  \caption{Zagęszczenie ludności zwizualizowane na mapie Stanów Zjednoczonych. \textit{Źródło:} \cite{USCB2021}.}\label{fig:figure:xx5}
 \end{figure}
 
 \subsection{Docelowy zbiór danych}
@@ -368,18 +390,8 @@ Pierwszym krokiem było dowiązanie wskaźników atmosferycznych do zbioru danyc
 
 Kolejnym etapem było dowiązanie powstałego w poprzednim kroku zbioru ze zbiorem danych uzyskanym z portalu ArcGIS. Osiągnięto to przez zmapowanie nazwy zamieszkanego hrabstwa osoby ze stwierdzonym COVID-19 z gęstością zaludnienia w tym obszarze. W ten sposób uzyskano zmienną \emph{pop\_density}, która określa gęstość zaludnienia wyrażoną w liczbie osób na mile kwadratową.
 
-Ostatnim krokiem było odrzucenie niepożądanych zmiennych z powstałego zbioru danych. Ten etap był konieczny gdyż niektóre zmienne nie miały bezpośredniego związku z wyjaśnieniem przedmiotu tej pracy. Odrzuconymi zmiennymi były:  \emph{county\_fips\_code},  \emph{res\_county}, \emph{res\_state}, \emph{cdc\_case\_earliest\_dt} oraz \emph{date\_month}.
+Ostatnim krokiem było odrzucenie niepożądanych zmiennych z powstałego zbioru danych. Ten etap był konieczny gdyż niektóre zmienne nie miały bezpośredniego związku z wyjaśnieniem przedmiotu tej pracy. Odrzuconymi zmiennymi były:  \emph{county\_fips\_code},  \emph{res\_county}, \emph{res\_state}, \emph{cdc\_case\_earliest\_dt} oraz \emph{date\_month}. Podsumowanie finalnego zbioru danych znajduję się w tabeli \ref{table:zmienne-finalne} (załącznik).
 
-
-\begin{table}[H]
-  \centering
-\resizebox{15cm}{!}{
-\centering
-\csvautotabular[respect underscore=true]{tables/zmienne_ostateczne.csv}
-}
-\caption{Opis zmiennych w finalnym zbiorze danych}
-\label{table:zmienne-finalne}
-\end{table}
 
 % --- chapter ---------------------------------------------------------
 \clearpage
@@ -392,11 +404,11 @@ Ostatnim krokiem było odrzucenie niepożądanych zmiennych z powstałego zbioru
 
 \subsection{Podział zbioru na treningowy, walidacyjny i testowy}
 \label{chapter:train-test-split}
-W uczeniu maszynowym powszechnym zadaniem jest badanie i konstruowanie algorytmów, które potrafią uczyć się na podstawie danych i dokonywać predykcji na ich podstawie. \cite{kohavi1998} Model jest początkowo dopasowywany do zbioru danych treningowych, który jest zbiorem przykładów używanych do dopasowania parametrów (np. wag połączeń między neuronami w sztucznych sieciach neuronowych) modelu. Model (np. sieć neuronowa lub naiwny klasyfikator Bayesa) jest trenowany na zbiorze danych treningowych za pomocą metody uczenia nadzorowanego, na przykład za pomocą metod optymalizacji, takich jak opadanie gradientowe lub stochastyczne opadanie gradientowe. W praktyce, zbiór danych szkoleniowych często składa się z par wektora wejściowego (lub skalara) i odpowiadającego mu wektora wyjściowego (lub skalara), gdzie klucz odpowiedzi jest powszechnie oznaczany jako cel (lub etykieta). Bieżący model jest uruchamiany z zestawem danych treningowych i wytwarza wynik, który jest następnie porównywany z celem, dla każdego wektora wejściowego w zestawie danych treningowych. W oparciu o wynik porównania i określony algorytm uczenia się, parametry modelu są dostosowywane. Dopasowanie modelu może obejmować zarówno selekcję zmiennych, jak i estymację parametrów.
+W uczeniu maszynowym powszechnym zadaniem jest badanie i konstruowanie algorytmów, które potrafią uczyć się na podstawie danych i dokonywać predykcji na ich podstawie \cite{kohavi1998}. Model jest początkowo dopasowywany do zbioru danych treningowych, który jest zbiorem przykładów używanych do dopasowania parametrów (np. wag połączeń między neuronami w sztucznych sieciach neuronowych) modelu. Model (np. sieć neuronowa lub naiwny klasyfikator Bayesa) jest trenowany na zbiorze danych treningowych za pomocą metody uczenia nadzorowanego, na przykład za pomocą metod optymalizacji, takich jak opadanie gradientowe lub stochastyczne opadanie gradientowe. W praktyce, zbiór danych szkoleniowych często składa się z par wektora wejściowego (lub skalara) i odpowiadającego mu wektora wyjściowego (lub skalara), gdzie klucz odpowiedzi jest powszechnie oznaczany jako cel (lub etykieta). Bieżący model jest uruchamiany z zestawem danych treningowych i wytwarza wynik, który jest następnie porównywany z celem, dla każdego wektora wejściowego w zestawie danych treningowych. W oparciu o wynik porównania i określony algorytm uczenia się, parametry modelu są dostosowywane. Dopasowanie modelu może obejmować zarówno selekcję zmiennych, jak i estymację parametrów.
 
 Następnie, dopasowany model jest używany do przewidywania odpowiedzi dla obserwacji w drugim zbiorze danych zwanym zbiorem danych walidacyjnych. Zbiór danych walidacyjnych zapewnia bezstronną ocenę dopasowania modelu na zbiorze danych treningowych podczas dostrajania hiperparametrów modelu (np. liczba jednostek ukrytych - warstw i szerokości warstw - w sieci neuronowej). Walidacyjne zbiory danych mogą być użyte do regularyzacji poprzez wczesne zatrzymanie (zatrzymanie treningu, gdy błąd na walidacyjnym zbiorze danych wzrasta, ponieważ jest to oznaką przepasowania do zbioru treningowego). Ta prosta procedura jest skomplikowana w praktyce przez fakt, że błąd zbioru walidacyjnego może wahać się podczas treningu, tworząc wiele lokalnych minimów. Ta komplikacja doprowadziła do powstania wielu reguł ad hoc służących do określania, kiedy przepełnienie naprawdę się rozpoczęło.
 
-Finalnie, testowy zbiór danych jest zbiorem danych używanym w celu zapewnienia bezstronnej oceny ostatecznego dopasowania modelu na treningowym zbiorze danych. Jeśli dane w testowym zbiorze danych nigdy nie były używane w trenowaniu modelu (na przykład w walidacji krzyżowej), testowy zbiór danych jest również nazywany zbiorem danych przejściowych (ang. holdout dataset). Termin \emph{zbiór walidacyjny} jest czasami używany zamiast terminu \emph{zbiór testowy} (np. jeżeli oryginalny zbiór danych został podzielony tylko na dwa podzbiory, zbiór testowy może być określany jako zbiór walidacyjny).\cite{brownlee2017}
+Finalnie, testowy zbiór danych jest zbiorem danych używanym w celu zapewnienia bezstronnej oceny ostatecznego dopasowania modelu na treningowym zbiorze danych. Jeśli dane w testowym zbiorze danych nigdy nie były używane w trenowaniu modelu (na przykład w walidacji krzyżowej), testowy zbiór danych jest również nazywany zbiorem danych przejściowych (ang. holdout dataset). Termin \emph{zbiór walidacyjny} jest czasami używany zamiast terminu \emph{zbiór testowy} (np. jeżeli oryginalny zbiór danych został podzielony tylko na dwa podzbiory, zbiór testowy może być określany jako zbiór walidacyjny) \cite{brownlee2017}.
 
 Docelowy zbiór danych użyty w tej pracy został losowo podzielony na treningowy, walidacyjny i testowy w stosunku 3:1:1. Etap ten umożliwił w kolejnych krokach dobranie właściwych parametrów oraz zbudowanie optymalnego modelu.
 
@@ -439,24 +451,24 @@ Najwyższą możliwą wartością F1-score jest 1.0, wskazując idealną precyzj
 
 \[ F_1 = \frac{2}{recall^{-1} + precision^{-1}} = 2 * \frac{precision * recall}{precision + recall} \]
 
-F1-score został użyty do wyznaczenia najlepszych hiperparametrów. Po podstawieniu kolejnych kombinacji hiperparametrów do budowanego modelu dla danych treningowych obliczana była wartość F1-score. Za najlepsze hiperparametry uznano te dla, których model przetestowany na danych walidacyjnych osiągnął najwyższą wartość F1-score.\cite{tharwat2018}
+F1-score został użyty do wyznaczenia najlepszych hiperparametrów. Po podstawieniu kolejnych kombinacji hiperparametrów do budowanego modelu dla danych treningowych obliczana była wartość F1-score. Za najlepsze hiperparametry uznano te dla, których model przetestowany na danych walidacyjnych osiągnął najwyższą wartość F1-score \cite{tharwat2018}.
 
-Ze względu na szerokie spektrum własności oraz celność tego wskaźnika F1-score został użyty również do przedstawienia jakości docelowego modelu. Wykonano to przez przetestowanie modelu na danych testowych i późniejszym obliczeniu wartości F1-score.\cite{powers2011}
+Ze względu na szerokie spektrum własności oraz celność tego wskaźnika F1-score został użyty również do przedstawienia jakości docelowego modelu. Wykonano to przez przetestowanie modelu na danych testowych i późniejszym obliczeniu wartości F1-score \cite{powers2011}.
 
 \subsubsection{Dokładność}
 
-W przypadku zadań klasyfikacyjnych terminy \emph{prawdziwie dodatni (tp)}, \emph{prawdziwie ujemny (tn)}, \emph{fałszywie dodatni (fp)} i \emph{fałszywie ujemny (fn)} porównują wyniki testowanego klasyfikatora z wiarygodną oceną zewnętrzną. Terminy pozytywny i negatywny odnoszą się do przewidywań klasyfikatora (czasami znanych jako oczekiwania), a terminy prawdziwy i fałszywy odnoszą się do tego, czy przewidywania te odpowiadają zewnętrznemu osądowi (czasami nazywanemu jako obserwacja). \cite{fawcett2005}
+W przypadku zadań klasyfikacyjnych terminy \emph{prawdziwie dodatni (tp)}, \emph{prawdziwie ujemny (tn)}, \emph{fałszywie dodatni (fp)} i \emph{fałszywie ujemny (fn)} porównują wyniki testowanego klasyfikatora z wiarygodną oceną zewnętrzną. Terminy pozytywny i negatywny odnoszą się do przewidywań klasyfikatora (czasami znanych jako oczekiwania), a terminy prawdziwy i fałszywy odnoszą się do tego, czy przewidywania te odpowiadają zewnętrznemu osądowi (czasami nazywanemu jako obserwacja) \cite{fawcett2005}.
 
-Dokładność (ang. accuracy) jest używana jako statystyczna miara tego, jak dobrze binarny test klasyfikacyjny prawidłowo identyfikuje lub wyklucza stan. Oznacza to, że dokładność jest proporcją prawidłowych przewidywań (zarówno prawdziwie pozytywnych, jak i prawdziwie negatywnych) wśród całkowitej liczby badanych przypadków. Jako takie, porównuje ono szacunki prawdopodobieństwa przed i po teście. Aby kontekst był jasny dzięki semantyce, jest ona często określana jako \emph{Rand accuracy} lub \emph{Rand index}. Jest to parametr testu.\cite{powers2015} Poniżej wzór dokładności:
+Dokładność (ang. accuracy) jest używana jako statystyczna miara tego, jak dobrze binarny test klasyfikacyjny prawidłowo identyfikuje lub wyklucza stan. Oznacza to, że dokładność jest proporcją prawidłowych przewidywań (zarówno prawdziwie pozytywnych, jak i prawdziwie negatywnych) wśród całkowitej liczby badanych przypadków. Jako takie, porównuje ono szacunki prawdopodobieństwa przed i po teście. Aby kontekst był jasny dzięki semantyce, jest ona często określana jako \emph{Rand accuracy} lub \emph{Rand index}. Jest to parametr testu \cite{powers2015}. Poniżej wzór dokładności:
 \[ Accuracy = \frac{tp + tn}{tp + tn + fp + fn} \]
 
-Miara dokładności sprawdza się przede wszystkim w zbalansowych zbiorach. Ze względu na niską liczbę pozytywnych wartości zmiennej objaśnianej \emph{death\_yn} miara ta posłużyła wyłącznie do opisu docelowego modelu.\cite{tharwat2018}
+Miara dokładności sprawdza się przede wszystkim w zbalansowych zbiorach. Ze względu na niską liczbę pozytywnych wartości zmiennej objaśnianej \emph{death\_yn} miara ta posłużyła wyłącznie do opisu docelowego modelu \cite{tharwat2018}.
 
 \subsubsection{Tablica pomyłek}
 
 W dziedzinie uczenia maszynowego, a konkretnie w problematyce klasyfikacji statystycznej, macierz pomyłek, zwana też macierzą błędów, jest specyficznym układem tabelarycznym pozwalającym na wizualizację działania algorytmu, zazwyczaj uczenia nadzorowanego (w uczeniu nienadzorowanym nazywana jest zwykle macierzą dopasowania). Każdy wiersz macierzy reprezentuje instancje w klasie rzeczywistej, natomiast każda kolumna reprezentuje instancje w klasie przewidywanej, lub odwrotnie - oba warianty są spotykane w literaturze. Nazwa macierzy pochodzi stąd, że pozwala ona łatwo zorientować się, czy system nie myli dwóch klas (tj. powszechnie błędnie przypisuje jedną klasę do drugiej).
 
-Jest to specjalny rodzaj tabeli kontyngencji, z dwoma wymiarami (\emph{rzeczywisty} i \emph{przewidywany}) oraz identycznymi zestawami \emph{klas} w obu wymiarach (każda kombinacja wymiaru i klasy jest zmienną w tabeli kontyngencji). \cite{powers2011}
+Jest to specjalny rodzaj tabeli kontyngencji, z dwoma wymiarami (\emph{rzeczywisty} i \emph{przewidywany}) oraz identycznymi zestawami \emph{klas} w obu wymiarach (każda kombinacja wymiaru i klasy jest zmienną w tabeli kontyngencji) \cite{powers2011}.
 
 Oprócz wizualnego przedstawienia jakości modelu tablica pomyłek może również posłużyć do obliczenia innych wskaźników takich jak czułość czy swoistość. Ze względu na zaprezentowane właściwości macierz błędów została użyta do opisu docelowego modelu.
 
@@ -466,7 +478,7 @@ Krzywa charakterystyki odbiornika (ang. receiver operating characteristic curve,
 
 Krzywa ROC jest tworzona poprzez wykreślenie współczynnika prawdziwych pozytywów (TPR) względem współczynnika fałszywych pozytywów (FPR) przy różnych ustawieniach progu. Współczynnik prawdziwych pozytywów jest również znany jako czułość, wycofanie lub prawdopodobieństwo wykrycia w uczeniu maszynowym. Współczynnik fałszywych wyników jest również znany jako prawdopodobieństwo fałszywego wyniku i może być obliczany jako (1 - specyficzność). Można o niej również myśleć jako o wykresie mocy jako funkcji błędu typu I reguły decyzyjnej (gdy wydajność jest obliczana tylko na podstawie próbki populacji, można o niej myśleć jako o estymatorze tych wielkości). Krzywa ROC jest więc czułością lub wycofaniem w funkcji błędu. Ogólnie rzecz biorąc, jeśli znane są rozkłady prawdopodobieństwa zarówno dla wykrywania, jak i fałszywego wyniku, krzywą ROC można wygenerować, wykreślając funkcję rozkładu kumulatywnego (obszar pod rozkładem prawdopodobieństwa od do progu dyskryminacji) prawdopodobieństwa wykrywania na osi y versus funkcję rozkładu kumulatywnego prawdopodobieństwa fałszywego wyniku na osi x.
 
-Analiza ROC dostarcza narzędzi do wyboru możliwie optymalnych modeli i odrzucania modeli suboptymalnych niezależnie od (i przed określeniem) kontekstu kosztów lub rozkładu klasy. Analiza ROC jest w bezpośredni i naturalny sposób związana z analizą kosztów i korzyści przy podejmowaniu decyzji diagnostycznych.\cite{fawcett2005}
+Analiza ROC dostarcza narzędzi do wyboru możliwie optymalnych modeli i odrzucania modeli suboptymalnych niezależnie od (i przed określeniem) kontekstu kosztów lub rozkładu klasy. Analiza ROC jest w bezpośredni i naturalny sposób związana z analizą kosztów i korzyści przy podejmowaniu decyzji diagnostycznych \cite{fawcett2005}.
 
 Jeśli poprawnie używane, krzywe ROC są bardzo potężnym narzędziem jako statystyczna miara wydajności w teorii wykrywania/klasyfikacji i testowaniu hipotez, ponieważ pozwalają na posiadanie wszystkich istotnych wielkości w jednym wykresie. Ze względu na te właściwości krzywa ROC została użyta do przedstawienia jakości docelowego modelu stworzonego dla tej pracy.
 
@@ -476,7 +488,7 @@ SHAP (SHapley Additive exPlanations) jest podejściem opartym na teorii gier, s�
 
 Celem SHAP jest wyjaśnienie predykcji instancji x poprzez obliczenie wkładu każdej cechy do predykcji. Metoda objaśniania SHAP oblicza wartości Shapleya z koalicyjnej teorii gier. Wartości cech instancji danych działają jak gracze w koalicji. Wartości Shapley'a mówią nam jak sprawiedliwie rozdzielić \emph{wypłatę} (= predykcję) pomiędzy cechy. Gracz może być indywidualną wartością cechy, np. dla danych tabelarycznych. Gracz może być również grupą wartości cech. Na przykład, aby wyjaśnić obraz, piksele mogą być pogrupowane w super piksele, a predykcja rozdzielona pomiędzy nie. Jedną z innowacji, którą SHAP wnosi jest to, że wyjaśnienie wartości Shapleya jest reprezentowane jako metoda addytywnego przypisania cech, model liniowy. Ten kontekst łączy LIME i wartości Shapleya. SHAP definiuje model objaśniający jako:
 \[ g(z') =  \phi_0 + \sum_{j=1}^{M}\phi_j \]
-gdzie g jest modelem objaśniającym, \( z'\in\{0,1\}^{M}\)  jest wektorem koalicji, M jest maksymalną wielkością koalicji, a \( \phi_j \in\mathbb{R}\) jest przypisaniem atrybutu cechy dla cechy j, wartości Shapleya. \cite{lundberg2017}
+gdzie g jest modelem objaśniającym, \( z'\in\{0,1\}^{M}\)  jest wektorem koalicji, M jest maksymalną wielkością koalicji, a \( \phi_j \in\mathbb{R}\) jest przypisaniem atrybutu cechy dla cechy j, wartości Shapleya \cite{lundberg2017}.
 
 Ze względu na brak bezpośredniej metody interpretacji parametrów modelu XGBoost konieczne było zastosowanie odrębnej techniki interpretacji wyników modelu. Uwzględniając ten aspekt oraz mając na uwadze uniwersalność podejścia SHAP dla nieliniowych modeli postanowiono zastosować go do interpretacji docelowego modelu.
 
@@ -505,29 +517,46 @@ Za pomocą metody opisanej w rozdziale \ref{chapter:train-test-split} w pierwsze
 Znając optymalne wartości hiperparametrów opracowano finalny model XGBoost. Predykcja na zbiorze testowym wykazała, że dokładność (\emph{ang. accuracy}) wynosi 0,981 a F1-score jest równy 0,451. Następnie wykonano obliczenia umożliwiające stworzenie macierzy nieufności oraz wykresu krzywej ROC.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=10cm]{roc.png}
-\caption{Wykres krzywej ROC. Poziomo odłożony odsetek wyników fałszywie dodatnich, pionowo odsetek wyników prawdziwie dodatnich. Czerwona linia przerywana opisuję losową klasyfikację. }
+  \centering
+  \begin{subfigure}[t]{\textwidth}
+	\centering
+    \includegraphics[width=10cm]{roc.png}
+  \end{subfigure}
+  \captionsetup{margin=10pt,font=small,labelfont=bf,width=.8\textwidth}
+  \caption{Wykres krzywej ROC. Poziomo odłożony odsetek wyników fałszywie dodatnich, pionowo odsetek wyników prawdziwie dodatnich. Czerwona linia przerywana opisuję losową klasyfikację. \textit{Źródło:} opracowanie własne.}
 \end{figure}
 
+
 \begin{figure}[H]
-\centering
-\includegraphics[width=10cm]{conf_matrix.png}
-\caption{Macierz nieufności dla klas \emph{Ozdrowienie} oraz \emph{Zgon}. Poziomo odłożone wartości uzyskane przez predykcje, pionowo wartości prawdziwe. }
+  \centering
+  \begin{subfigure}[t]{\textwidth}
+	\centering
+    \includegraphics[width=10cm]{conf_matrix.png}
+  \end{subfigure}
+  \captionsetup{margin=10pt,font=small,labelfont=bf,width=.8\textwidth}
+  \caption{Macierz nieufności dla klas \emph{Ozdrowienie} oraz \emph{Zgon}. Poziomo odłożone wartości uzyskane przez predykcje, pionowo wartości prawdziwe. \textit{Źródło:} opracowanie własne.}
 \end{figure}
 
 Wysoki wynik dokładności oraz położenie krzywej ROC blisko punktu (0,1) świadczą o wysokiej jakości opracowanego modelu. Niestety, wynik F1-score oraz analiza macierzy nieufności dostarczają przeciwnych wniosków. Niższe wyniki tych miar są w pewnym stopniu spowodowane przez niezbalansowany zbiór danych. Klasa \emph{Ozdrowienie} stanowi 98,6\% wszystkich obserwacji zmiennej \emph{death\_yn} co prowadzi do niedoszacowania przez model klasy \emph{Zgon}. W celu weryfikacji tego założenia skonstruowano zbalansowany zbiór testowy i na nim przeprowadzono dodatkową predykcje. 
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=10cm]{roc-bs.png}
-\caption{Wykres krzywej ROC - zbalansowany zbiór testowy.}
+  \centering
+  \begin{subfigure}[t]{\textwidth}
+	\centering
+    \includegraphics[width=10cm]{roc-bs.png}
+  \end{subfigure}
+  \captionsetup{margin=10pt,font=small,labelfont=bf,width=.8\textwidth}
+  \caption{Wykres krzywej ROC - zbalansowany zbiór testowy. \textit{Źródło:} opracowanie własne.}
 \end{figure}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=10cm]{conf_matrix_balanced.png}
-\caption{Macierz nieufności dla klas \emph{Ozdrowienie} oraz \emph{Zgon} - zbalansowany zbiór testowy.}
+  \centering
+  \begin{subfigure}[t]{\textwidth}
+	\centering
+    \includegraphics[width=10cm]{conf_matrix_balanced.png}
+  \end{subfigure}
+  \captionsetup{margin=10pt,font=small,labelfont=bf,width=.8\textwidth}
+  \caption{Macierz nieufności dla klas \emph{Ozdrowienie} oraz \emph{Zgon} - zbalansowany zbiór testowy. \textit{Źródło:} opracowanie własne.}
 \end{figure}
 
 Zarówno w przypadku wyjściowego oraz zbalansowanego zbioru testowego krzywa ROC znajduję się powyżej czerwonej, przerywanej linii opisującej losową klasyfikacje. Fakt, ten świadczy o dokładniejszej predykcji modelu w porównaniu z losową klasyfikacją. Przy użyciu zbalansowanego zbioru testowego wartość F1-score wzrosła do 0,716. Wysoka wartość obserwacji fałszywie negatywnych świadczy o wcześniej przypuszczanym niedoszacowaniu przez model klasy \emph{Zgon}.
@@ -539,18 +568,27 @@ Kolejnym aspektem, który mógł wpłynąć na niski wynik F1-score jest niewyst
 Po skonstruowaniu optymalnego modelu uczenia maszynowego przystąpiono do etapu jego interpretacji. W tym kroku wykorzystano metodę SHAP (SHapley Additive exPlanations). W pierwszej kolejności obliczono wartość Shapleya dla wszystkich zmiennych w każdej obserwacji. 
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=10cm]{shap_abs.png}
-\caption{Średnie z bezwzględnych wartości SHAP  - wielkości oddziaływania zmiennych na wynik modelu.}
+  \centering
+  \begin{subfigure}[t]{\textwidth}
+	\centering
+    \includegraphics[width=10cm]{shap_abs.png}
+  \end{subfigure}
+  \captionsetup{margin=10pt,font=small,labelfont=bf,width=.8\textwidth}
+  \caption{Średnie z bezwzględnych wartości SHAP  - wielkości oddziaływania zmiennych na wynik modelu. \textit{Źródło:} opracowanie własne.}
 \end{figure}
 
 Dzięki przeprowadzonym obliczeniom wyłoniono zbiór zmiennych, które najsilniej oddziaływały na wynik modelu. Najbardziej istotną zmienną objaśniającą okazała się \emph{medcond\_yn} ze średnią bezwzględnych wartości SHAP na poziomie 0,648. Kolejną silnie wpływającą na model zmienną okazała się \emph{medcond\_yn} (średnia z bezwzględnych wartości SHAP = 0,555). Silnie oddziałującymi na wynik modelu okazały się również przedziały wiekowe, a w szczególności przedziały krańcowe. Znaczący wpływ miały również objawy występujący przy zachorowaniu przy czym najbardziej najbardziej istotną zmienną była \emph{headache\_yn} (średnia z bezwzględnych wartości SHAP = 0,176). Mniejszy wpływ miały zmienne atmosferyczne, dane demografic
 zne oraz zmienne biologiczne takie jak grupa etniczna czy płeć.
 
+
 \begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{shap_summary.png}
-\caption{Rozkłady wartości SHAP z uwzględnieniem wartości zmiennych. Kolor czerwony wskazuję na wysoką wartość zmiennej, niebieski na niską wartość zmiennej.}
+  \centering
+  \begin{subfigure}[t]{\textwidth}
+	\centering
+    \includegraphics[width=15cm]{shap_summary.png}
+  \end{subfigure}
+  \captionsetup{margin=10pt,font=small,labelfont=bf,width=.8\textwidth}
+  \caption{Rozkłady wartości SHAP z uwzględnieniem wartości zmiennych. Kolor czerwony wskazuję na wysoką wartość zmiennej, niebieski na niską wartość zmiennej. \textit{Źródło:} opracowanie własne.}
 \end{figure}
 
 Kolejną zaletą wartości SHAP jest możliwość interpretacji kierunku wpływu zmiennych na wynik predykcji modelu. Z przeprowadzonych obliczeń wynika, iż zarówno zmienna \emph{medcond\_yn} jak i \emph{hosp\_yn} przy wartości 1 wpływa podwyższa prawdopodobieństwo pozytywnego wynik predykcji. Warto zauważyć, że zmienna \emph{medcond\_yn} przy wartości 0 wpływa bardzo silnie na obniżenie prawdopodobieństwa wystąpienia pozytywnej predykcji. Analiza kolejnych rozkładów zmiennych związanych z grupą wiekową wskazuję na silny wzrost prawdopodobieństwa pozytywnego wyniku predykcji przy wzroście wieku pacjenta. Rozkład wartości SHAP dla zmiennych związanych z symptomami świadczą o małym prawdopodobieństwie uzyskania pozytywnego wyniku przy występowaniu stosunkowo lekkich objawów (zmienne: \emph{headache\_yn}, \emph{runnose\_yn} oraz \emph{sthroat\_yn}. Przeciwny rezultat dają zmienne określające ciężkie symptomy tj. \emph{abxchest\_yn} oraz \emph{sob\_yn}. Rozkład wartości SHAP dla zmiennych zmiennej \emph{sex} wskazuję na przesunięcie w kierunku pozytywnego wyniku predykcji w sytuacji gdy COVID-19 został stwierdzony u mężczyzny. Niska wartość zmiennej \emph{avg\_temp} również przyczynia się do zmniejszenia prawdopodobieństwa pozytywnego wyniku predykcji. 
@@ -582,7 +620,116 @@ Praca dyplomowa \emph{Determinanty przebiegu choroby COVID-19} dostarczyła wiel
 
 % ---------------------------------------------------------------------
 \clearpage
-\section{Dodatek: Ważne rzeczy do dodania}
+
+\begin{landscape}
+{\footnotesize
+\section{Ważne tabele.}
+
+\begin{longtable}{lll}
+\caption{Zmienne ze zbioru CDC użyte w dalszej części pracy}\label{table:zmienneCDC}\\
+\hline
+Zmienna                   & Opis                                                 & Typ zmiennej   \\ 
+\hline
+\endfirsthead
+\multicolumn{3}{c}%
+{\tablename\ \thetable\ -- \textit{kontynuacja z poprzedniej strony}} \\
+\hline
+Zmienna                   & Opis                                                 & Typ zmiennej   \\
+\hline
+\endhead
+\hline \multicolumn{3}{r}{\textit{kontynuowane na następnej stronie}} \\
+\endfoot
+\hline
+\endlastfoot
+race\_ethnicity\_combined & Rasa lub grupa etnicna                               & wielomianowa nieuporządkowana \\
+cdc\_case\_earliest\_dt   & Najwcześniejsza data związana z obserwacją           & data                          \\
+sex                       & Płeć                                                 & dwumianowa                    \\
+hosp\_yn                  & Hospitalizacja pacjenta                              & dwumianowa                    \\
+icu\_yn                   & Pobyt na oddziale intensywnej terapi                 & dwumianowa                    \\
+hc\_work\_yn              & Status pracownika służby zdrowia                     & dwumianowa                    \\
+pna\_yn                   & Obecne zapalenie płuc                                & dwumianowa                    \\
+abxchest\_yn              & Nieprawidłowości wykryte przez RTG klatki piersiowej & dwumianowa                    \\
+acuterespdistress\_yn     & Obecność zespołu ostrej niewydolności oddechowej     & dwumianowa                    \\
+mechvent\_yn              & Użycie mechanicznej wentylacji (intubacja)           & dwumianowa                    \\
+fever\_yn                 & Występowanie gorączki                                & dwumianowa                    \\
+sfever\_yn                & Subiektywne poczucie gorączki                        & dwumianowa                    \\
+chills\_yn                & Występowanie dreszczy                                & dwumianowa                    \\
+myalgia\_yn               & Występowanie bóli mięśniowych                        & dwumianowa                    \\
+runnose\_yn               & Występowanie kataru                                  & dwumianowa                    \\
+sthroat\_yn               & Występowanie bólu gardła                             & dwumianowa                    \\
+cough\_yn                 & Występowanie kaszlu                                  & dwumianowa                    \\
+sob\_yn                   & Występowanie trudności z oddechaniem                 & dwumianowa                    \\
+nauseavomit\_yn           & Występowanie nudności                                & dwumianowa                    \\
+headache\_yn              & Występowanie bólu głowy                              & dwumianowa                    \\
+abdom\_yn                 & Występowanie bólu brzucha                            & dwumianowa                    \\
+diarrhea\_yn              & Występowanie biegunki                                & dwumianowa                    \\
+medcond\_yn               & Występowanie współistniejących schorzeń              & dwumianowa                    \\
+county\_fips\_code        & Kod pocztowy                                         & licznikowa                    \\
+res\_county               & Zamieszkane hrabstwo                                 & wielomianowa nieuporządkowana \\
+res\_state                & Zamieszkany stan                                     & wielomianowa nieuporządkowana \\
+age\_group                & Grupa wiekowa                                        & wielomianowa uporządkowana    \\
+death\_yn                 & Zgon pacjenta                                        & dwumianowa                    \\
+ \hline
+\end{longtable}
+
+
+\clearpage
+\begin{longtable}{lll}
+\caption{Opis zmiennych w finalnym zbiorze danych}\label{table:zmienne-finalne}\\
+\hline
+Zmienna                   & Opis                                                 & Typ zmiennej   \\ 
+\hline
+\endfirsthead
+\multicolumn{3}{c}%
+{\tablename\ \thetable\ -- \textit{kontynuacja z poprzedniej strony}} \\
+\hline
+Zmienna                   & Opis                                                 & Typ zmiennej   \\
+\hline
+\endhead
+\hline \multicolumn{3}{r}{\textit{kontynuowane na następnej stronie}} \\
+\endfoot
+\hline
+\endlastfoot
+race\_ethnicity\_combined & Rasa lub grupa etnicna                               & wielomianowa nieuporządkowana \\
+sex                       & Płeć                                                 & dwumianowa                    \\
+hosp\_yn                  & Hospitalizacja pacjenta                              & dwumianowa                    \\
+icu\_yn                   & Pobyt na oddziale intensywnej terapi                 & dwumianowa                    \\
+death\_yn                 & Zgon pacjenta                                        & dwumianowa                    \\
+hc\_work\_yn              & Status pracownika służby zdrowia                     & dwumianowa                    \\
+pna\_yn                   & Obecne zapalenie płuc                                & dwumianowa                    \\
+abxchest\_yn              & Nieprawidłowości wykryte przez RTG klatki piersiowej & dwumianowa                    \\
+acuterespdistress\_yn     & Obecność zespołu ostrej niewydolności oddechowej     & dwumianowa                    \\
+mechvent\_yn              & Użycie mechanicznej wentylacji (intubacja)           & dwumianowa                    \\
+fever\_yn                 & Występowanie gorączki                                & dwumianowa                    \\
+sfever\_yn                & Subiektywne poczucie gorączki                        & dwumianowa                    \\
+chills\_yn                & Występowanie dreszczy                                & dwumianowa                    \\
+myalgia\_yn               & Występowanie bóli mięśniowych                        & dwumianowa                    \\
+runnose\_yn               & Występowanie kataru                                  & dwumianowa                    \\
+sthroat\_yn               & Występowanie bólu gardła                             & dwumianowa                    \\
+cough\_yn                 & Występowanie kaszlu                                  & dwumianowa                    \\
+sob\_yn                   & Występowanie trudności z oddechaniem                 & dwumianowa                    \\
+nauseavomit\_yn           & Występowanie nudności                                & dwumianowa                    \\
+headache\_yn              & Występowanie bólu głowy                              & dwumianowa                    \\
+abdom\_yn                 & Występowanie bólu brzucha                            & dwumianowa                    \\
+diarrhea\_yn              & Występowanie biegunki                                & dwumianowa                    \\
+medcond\_yn               & Występowanie współistniejących schorzeń              & dwumianowa                    \\
+age\_group                & Grupa wiekowa                                        & wielomianowa uporządkowana    \\
+avg\_temp                 & Średnia dobowa temperatura                           & ciągła                        \\
+avg\_wind                 & Średnia prędkość wiatru                              & ciągła                        \\
+avg\_humidity\_A          & Średnia wilgotność powietrza rano                    & ciągła                        \\
+avg\_humidity\_M          & Średnia wilgotność powietrza wieczorem               & ciągła                        \\
+pop\_density              & Zagęszczenie ludności                                & ciągła                  \\
+ 
+ \hline
+\end{longtable}
+}
+\end{landscape}
+
+\clearpage
+\section{Kod źródłowy.}
+\lstinputlisting{scripts/mgr_clean_ofurmanczuk.py}
+
+
  
 
 
